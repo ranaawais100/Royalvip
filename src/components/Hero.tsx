@@ -94,51 +94,52 @@ const Hero = () => {
                 : 'opacity-0 scale-110'
             }`}
           >
-            <div
-              className="w-full h-full bg-cover bg-center bg-no-repeat transform transition-transform duration-1500 ease-out"
-              style={{ backgroundImage: `url(${slide.image})` }}
-            >
-              {/* Enhanced Gradient Overlays */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
-              {/* Luxury Gold Accent Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
-            </div>
+            <img
+              src={slide.image}
+              alt={slide.title}
+              className="w-full h-full object-cover object-center transform transition-transform duration-1500 ease-out"
+              loading={index === 0 ? "eager" : "lazy"}
+            />
+            {/* Enhanced Gradient Overlays */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
+            {/* Luxury Gold Accent Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
           </div>
         ))}
 
         {/* Enhanced Navigation Controls */}
-        <div className="absolute top-8 right-8 z-30 flex items-center gap-4">
+        <div className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-8 z-30 flex items-center gap-2 sm:gap-3 lg:gap-4">
           <button
             onClick={togglePlayPause}
-            className="p-3 rounded-full bg-white/15 backdrop-blur-md hover:bg-white/25 transition-all duration-500 text-white border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="p-2 sm:p-2.5 lg:p-3 rounded-full bg-white/15 backdrop-blur-md hover:bg-white/25 transition-all duration-500 text-white border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
-            {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
+            {isPlaying ? <Pause className="h-4 w-4 sm:h-5 sm:w-5" /> : <Play className="h-4 w-4 sm:h-5 sm:w-5" />}
           </button>
           <button
             onClick={prevSlide}
-            className="p-3 rounded-full bg-white/15 backdrop-blur-md hover:bg-white/25 transition-all duration-500 text-white border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="p-2 sm:p-2.5 lg:p-3 rounded-full bg-white/15 backdrop-blur-md hover:bg-white/25 transition-all duration-500 text-white border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
           <button
             onClick={nextSlide}
-            className="p-3 rounded-full bg-white/15 backdrop-blur-md hover:bg-white/25 transition-all duration-500 text-white border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="p-2 sm:p-2.5 lg:p-3 rounded-full bg-white/15 backdrop-blur-md hover:bg-white/25 transition-all duration-500 text-white border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
         </div>
 
         {/* Enhanced Slide Indicators */}
-        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-30 flex gap-3">
+        <div className="absolute bottom-6 sm:bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 z-30 flex gap-2 sm:gap-3">
           {heroSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`transition-all duration-500 rounded-full border-2 ${
                 index === currentSlide
-                  ? 'w-12 h-3 bg-gradient-to-r from-primary to-accent border-white/60 shadow-lg'
-                  : 'w-3 h-3 bg-white/40 border-white/30 hover:bg-white/60 hover:border-white/50 hover:scale-110'
+                  ? 'w-8 h-2 sm:w-10 sm:h-2.5 lg:w-12 lg:h-3 bg-gradient-to-r from-primary to-accent border-white/60 shadow-lg'
+                  : 'w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 bg-white/40 border-white/30 hover:bg-white/60 hover:border-white/50 hover:scale-110'
               }`}
             />
           ))}
@@ -146,8 +147,8 @@ const Hero = () => {
 
         {/* Hero Content */}
         <div className="absolute inset-0 z-20 flex items-center">
-          <div className="container mx-auto px-6 lg:px-8">
-            <div className="max-w-5xl">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-2xl sm:max-w-3xl lg:max-w-5xl">
               {/* Animated Content */}
               <div className="text-white space-y-8">
                 {/* Premium Badge */}
@@ -161,18 +162,18 @@ const Hero = () => {
                 </div>
 
                 <div className="overflow-hidden">
-                  <h1 className={`text-4xl md:text-6xl font-bold leading-tight transform transition-all duration-1200 delay-300 ${
+                  <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight transform transition-all duration-1200 delay-300 ${
                     currentSlide >= 0 ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
                   }`}>
-                    <span className="block text-white drop-shadow-2xl text-3xl md:text-5xl">{heroSlides[currentSlide]?.title}</span>
-                    <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent drop-shadow-lg text-2xl md:text-4xl">
+                    <span className="block text-white drop-shadow-2xl text-xl sm:text-2xl md:text-3xl lg:text-5xl">{heroSlides[currentSlide]?.title}</span>
+                    <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent drop-shadow-lg text-lg sm:text-xl md:text-2xl lg:text-4xl">
                       {heroSlides[currentSlide]?.subtitle}
                     </span>
                   </h1>
                 </div>
 
                 <div className="overflow-hidden">
-                  <p className={`text-lg md:text-xl text-gray-100 max-w-3xl leading-relaxed font-light transform transition-all duration-1200 delay-500 ${
+                  <p className={`text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 max-w-xl sm:max-w-2xl lg:max-w-3xl leading-relaxed font-light transform transition-all duration-1200 delay-500 ${
                     currentSlide >= 0 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                   }`}>
                     {heroSlides[currentSlide]?.description}
@@ -180,25 +181,25 @@ const Hero = () => {
                 </div>
 
                 {/* Enhanced Features */}
-                <div className={`flex flex-wrap gap-4 transform transition-all duration-1200 delay-700 ${
+                <div className={`flex flex-wrap gap-2 sm:gap-3 lg:gap-4 transform transition-all duration-1200 delay-700 ${
                   currentSlide >= 0 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                 }`}>
                   {heroSlides[currentSlide]?.features.map((feature, index) => (
-                    <div key={index} className="flex items-center gap-3 bg-gradient-to-r from-white/15 to-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105">
-                      <Star className="h-4 w-4 text-primary" />
-                      <span className="text-xs font-medium text-white">{feature}</span>
+                    <div key={index} className="flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-white/15 to-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105">
+                      <Star className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
+                      <span className="text-xs sm:text-xs lg:text-xs font-medium text-white">{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Enhanced CTA Buttons */}
-                <div className={`flex flex-col sm:flex-row gap-6 pt-6 transform transition-all duration-1200 delay-900 ${
+                <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 pt-4 sm:pt-6 transform transition-all duration-1200 delay-900 ${
                   currentSlide >= 0 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                 }`}>
                   <Button
                     onClick={handleBookNow}
                     size="lg"
-                    className="bg-gradient-to-r from-primary via-accent to-primary hover:from-primary/90 hover:via-accent/90 hover:to-primary/90 text-white font-bold px-8 py-4 text-lg shadow-2xl hover:shadow-primary/30 transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 border border-primary/30 backdrop-blur-sm"
+                    className="bg-gradient-to-r from-primary via-accent to-primary hover:from-primary/90 hover:via-accent/90 hover:to-primary/90 text-white font-bold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-2xl hover:shadow-primary/30 transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 border border-primary/30 backdrop-blur-sm w-full sm:w-auto"
                   >
                     Book Now
                   </Button>
@@ -206,27 +207,30 @@ const Hero = () => {
                     onClick={() => navigate('/fleet')}
                     variant="outline"
                     size="lg"
-                    className="border-2 border-white/40 text-white hover:bg-white/15 backdrop-blur-md px-8 py-4 text-lg transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 shadow-lg hover:shadow-xl font-semibold"
+                    className="border-2 border-white/40 text-white hover:bg-white/15 backdrop-blur-md px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 shadow-lg hover:shadow-xl font-semibold w-full sm:w-auto"
                   >
                     View Fleet
                   </Button>
                 </div>
 
                 {/* Enhanced Trust Indicators */}
-                <div className={`hidden md:flex flex-wrap items-center gap-8 pt-8 transform transition-all duration-1200 delay-1100 ${
+                <div className={`flex flex-wrap items-center gap-2 sm:gap-4 lg:gap-8 pt-4 sm:pt-6 lg:pt-8 transform transition-all duration-1200 delay-1100 ${
                   currentSlide >= 0 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                 }`}>
-                  <div className="flex items-center gap-3 text-xs text-white/90 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1 border border-white/20">
-                    <Shield className="h-4 w-4 text-primary" />
-                    <span className="font-medium">Fully Licensed & Insured</span>
+                  <div className="flex items-center gap-2 sm:gap-3 text-xs text-white/90 bg-white/10 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1 border border-white/20">
+                    <Shield className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
+                    <span className="font-medium hidden sm:inline">Fully Licensed & Insured</span>
+                    <span className="font-medium sm:hidden">Licensed</span>
                   </div>
-                  <div className="flex items-center gap-3 text-xs text-white/90 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1 border border-white/20">
-                    <Clock className="h-4 w-4 text-primary" />
-                    <span className="font-medium">24/7 Premium Support</span>
+                  <div className="flex items-center gap-2 sm:gap-3 text-xs text-white/90 bg-white/10 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1 border border-white/20">
+                    <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
+                    <span className="font-medium hidden sm:inline">24/7 Premium Support</span>
+                    <span className="font-medium sm:hidden">24/7 Support</span>
                   </div>
-                  <div className="flex items-center gap-3 text-xs text-white/90 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1 border border-white/20">
-                    <Star className="h-4 w-4 text-primary" />
-                    <span className="font-medium">5-Star Rated Service</span>
+                  <div className="flex items-center gap-2 sm:gap-3 text-xs text-white/90 bg-white/10 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1 border border-white/20">
+                    <Star className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
+                    <span className="font-medium hidden sm:inline">5-Star Rated Service</span>
+                    <span className="font-medium sm:hidden">5-Star Rated</span>
                   </div>
                 </div>
               </div>
