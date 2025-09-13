@@ -172,13 +172,13 @@ const UAEMap = () => {
         </div>
 
         {/* Luxury Container */}
-        <div className="bg-gradient-to-br from-card/50 to-secondary/30 backdrop-blur-sm rounded-2xl border border-primary/20 shadow-2xl shadow-primary/10 p-8">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div className="bg-gradient-to-br from-card/50 to-secondary/30 backdrop-blur-sm rounded-2xl border border-primary/20 shadow-2xl shadow-primary/10 p-4 sm:p-6 md:p-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {/* Interactive Map */}
             <div className="lg:col-span-3">
               <Card className="overflow-hidden border-primary/30 bg-gradient-to-br from-card to-secondary/50 shadow-luxury">
                 <CardContent className="p-0">
-                  <div className="relative h-[500px] bg-gradient-to-br from-primary/10 to-accent/10">
+                  <div className="relative h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px] bg-gradient-to-br from-primary/10 to-accent/10">
                     {/* Google Maps Embed with Dark Theme */}
                     <iframe
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462560.68834066757!2d54.89782924999999!3d25.0762677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1703123456789!5m2!1sen!2s&maptype=roadmap&style=feature:all%7Celement:geometry%7Ccolor:0x212121&style=feature:all%7Celement:labels.icon%7Cvisibility:off&style=feature:all%7Celement:labels.text.fill%7Ccolor:0x757575&style=feature:all%7Celement:labels.text.stroke%7Ccolor:0x212121&style=feature:administrative%7Celement:geometry%7Ccolor:0x757575&style=feature:administrative.country%7Celement:labels.text.fill%7Ccolor:0x9e9e9e&style=feature:administrative.land_parcel%7Cvisibility:off&style=feature:administrative.locality%7Celement:labels.text.fill%7Ccolor:0xbdbdbd&style=feature:poi%7Celement:labels.text.fill%7Ccolor:0x757575&style=feature:poi.park%7Celement:geometry%7Ccolor:0x181818&style=feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x616161&style=feature:poi.park%7Celement:labels.text.stroke%7Ccolor:0x1b1b1b&style=feature:road%7Celement:geometry.fill%7Ccolor:0x2c2c2c&style=feature:road%7Celement:labels.text.fill%7Ccolor:0x8a8a8a&style=feature:road.arterial%7Celement:geometry%7Ccolor:0x373737&style=feature:road.highway%7Celement:geometry%7Ccolor:0xd4af37&style=feature:road.highway.controlled_access%7Celement:geometry%7Ccolor:0xd4af37&style=feature:road.local%7Celement:labels.text.fill%7Ccolor:0x616161&style=feature:transit%7Celement:labels.text.fill%7Ccolor:0x757575&style=feature:water%7Celement:geometry%7Ccolor:0x000000&style=feature:water%7Celement:labels.text.fill%7Ccolor:0x3d3d3d&markers=color:0xd4af37%7Clabel:A%7C25.2532,55.3657&markers=color:0xd4af37%7Clabel:B%7C25.1972,55.2744&markers=color:0xd4af37%7Clabel:C%7C25.1413,55.1853&markers=color:0xd4af37%7Clabel:D%7C25.1975,55.2796&markers=color:0xd4af37%7Clabel:E%7C25.1124,55.1390&markers=color:0xd4af37%7Clabel:F%7C24.4619,54.3178"
@@ -226,17 +226,43 @@ const UAEMap = () => {
                    onMouseEnter={() => setHoveredLocation(index)}
                    onMouseLeave={() => setHoveredLocation(null)}
                  >
-                  <CardContent className="p-3">
-                    <div className="flex items-center space-x-3">
-                      {/* Icon */}
-                      <div className="p-2 rounded-full bg-primary/20 text-primary group-hover:bg-primary/30 transition-colors duration-300 flex-shrink-0">
+                  <CardContent className="p-0">
+                    {/* Responsive Image Container */}
+                    <div className="relative w-full h-24 sm:h-28 md:h-32 lg:h-24 xl:h-28 overflow-hidden">
+                      <img 
+                        src={location.image.replace('w=300&h=200', 'w=800&h=600')}
+                        alt={location.name}
+                        className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
+                        loading="lazy"
+                        style={{
+                          aspectRatio: '16/9',
+                          objectFit: 'cover'
+                        }}
+                      />
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      
+                      {/* VIP Badge */}
+                      {location.vip && (
+                        <div className="absolute top-2 right-2">
+                          <Badge className="bg-primary/90 text-white text-xs px-2 py-1">
+                            VIP
+                          </Badge>
+                        </div>
+                      )}
+                      
+                      {/* Icon Overlay */}
+                      <div className="absolute top-2 left-2 p-1.5 rounded-full bg-white/20 backdrop-blur-sm text-white">
                         {location.icon}
                       </div>
-                      
-                      {/* Content */}
-                      <div className="flex-1 min-w-0">
+                    </div>
+                    
+                    {/* Content Section */}
+                    <div className="p-3">
+                      <div className="space-y-2">
                         <h4 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors duration-300 truncate">{location.name}</h4>
-                        <div className="flex items-center space-x-2 mt-1">
+                        <p className="text-xs text-muted-foreground line-clamp-2">{location.description}</p>
+                        <div className="flex items-center justify-between">
                           <Badge variant="outline" className="text-xs border-primary/30 text-primary">
                             {location.category}
                           </Badge>

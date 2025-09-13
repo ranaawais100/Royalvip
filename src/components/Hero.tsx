@@ -83,7 +83,9 @@ const Hero = () => {
   return (
     <section className="relative h-screen overflow-hidden">
       {/* Hero Carousel Container */}
-      <div className="relative w-full h-full">
+      <div className="relative w-full h-full min-h-[100vh] max-h-[100vh]">
+        {/* Responsive Image Container */}
+        <div className="absolute inset-0 w-full h-full">
         {/* Background Images */}
         {heroSlides.map((slide, index) => (
           <div
@@ -97,8 +99,16 @@ const Hero = () => {
             <img
               src={slide.image}
               alt={slide.title}
-              className="w-full h-full object-cover object-center transform transition-transform duration-1500 ease-out"
+              className="w-full h-full object-cover object-center transform transition-transform duration-1500 ease-out
+                         sm:object-cover md:object-cover lg:object-cover xl:object-cover
+                         scale-100 sm:scale-105 md:scale-110 lg:scale-105 xl:scale-100
+                         hover:scale-110 sm:hover:scale-115 md:hover:scale-120 lg:hover:scale-115 xl:hover:scale-110"
               loading={index === 0 ? "eager" : "lazy"}
+              style={{
+                aspectRatio: 'auto',
+                minHeight: '100vh',
+                maxHeight: '100vh'
+              }}
             />
             {/* Enhanced Gradient Overlays */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
@@ -107,6 +117,7 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
           </div>
         ))}
+        </div>
 
         {/* Enhanced Navigation Controls */}
         <div className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-8 z-30 flex items-center gap-2 sm:gap-3 lg:gap-4">
@@ -147,8 +158,8 @@ const Hero = () => {
 
         {/* Hero Content */}
         <div className="absolute inset-0 z-20 flex items-center">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl sm:max-w-3xl lg:max-w-5xl">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div className="max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
               {/* Animated Content */}
               <div className="text-white space-y-8">
                 {/* Premium Badge */}
