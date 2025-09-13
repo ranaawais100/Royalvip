@@ -202,7 +202,7 @@ const FloatingChatbot: React.FC = () => {
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Ask me anything about Royal VIP Limos Dubai..."
-                className="flex-1 bg-gray-800 border border-yellow-400/30 rounded-full px-4 py-2 text-yellow-400 placeholder-yellow-400/50 focus:outline-none focus:border-yellow-400 text-sm"
+                className="flex-1 bg-gray-800 border border-yellow-400/30 rounded-full px-4 py-2 text-white placeholder-yellow-400/50 focus:outline-none focus:border-yellow-400 text-sm"
               />
               <button
                 onClick={handleSendMessage}
