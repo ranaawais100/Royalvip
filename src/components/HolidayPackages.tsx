@@ -377,7 +377,7 @@ const HolidayPackages = () => {
             {duplicatedPackages.map((pkg, index) => (
             <Card 
               key={`${pkg.id}-${index}`}
-              className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[340px] xl:w-[360px] group overflow-hidden bg-card border-border hover:shadow-luxury transition-all duration-500 hover:-translate-y-2 hover:border-primary/30"
+              className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[340px] xl:w-[360px] group overflow-hidden bg-card border-border transition-all duration-500 hover:-translate-y-2 hover:border-primary/30"
             >
               <div className="relative overflow-hidden">
                 <img 
@@ -430,7 +430,7 @@ const HolidayPackages = () => {
                   </div>
                   <Button 
                     onClick={() => handleBookNow(pkg)}
-                    className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 text-sm sm:text-base px-3 sm:px-4"
+                    className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground transition-all duration-300 text-sm sm:text-base px-3 sm:px-4"
                   >
                     <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                     <span className="hidden sm:inline">Book Now</span>

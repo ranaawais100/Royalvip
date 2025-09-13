@@ -28,7 +28,7 @@ const AutoCarCard: React.FC<AutoCarCardProps> = ({
 
 
   return (
-    <Card className={`group overflow-hidden bg-gradient-to-br from-gray-900 to-black border-gray-800 hover:shadow-2xl hover:shadow-yellow-500/20 transition-all duration-500 hover:-translate-y-2 hover:border-yellow-500/30 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl ${className}`}>
+    <Card className={`group overflow-hidden bg-gradient-to-br from-gray-900 to-black border-gray-800 transition-all duration-500 hover:-translate-y-2 hover:border-yellow-500/30 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl ${className}`}>
       <div className="relative overflow-hidden">
         {isImageLoading && (
           <div className="absolute inset-0 bg-gray-900 flex items-center justify-center z-10">
@@ -81,7 +81,7 @@ const AutoCarCard: React.FC<AutoCarCardProps> = ({
         <div className="mt-4">
           <button
             onClick={handleViewGallery}
-            className="w-full bg-gradient-to-r from-[#d4af37] to-[#f5e79e] hover:from-[#f5e79e] hover:to-[#d4af37] text-black font-semibold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/25 flex items-center justify-center gap-2"
+            className="w-full bg-gradient-to-r from-[#d4af37] to-[#f5e79e] hover:from-[#f5e79e] hover:to-[#d4af37] text-black font-semibold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
           >
             <Camera className="h-4 w-4" />
             View Gallery

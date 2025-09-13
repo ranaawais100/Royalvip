@@ -10,10 +10,10 @@ const RoyalVIPLimosLogo = () => (
     <img 
       src={AfraaLogo} 
       alt="Royal VIP Limos" 
-      className="h-12 w-auto mr-3"
+      className="h-10 sm:h-12 w-auto mr-2 sm:mr-3"
     />
-    <div>
-      <span className="block text-xl font-bold tracking-tight">ROYAL<span className="text-primary">VIP</span></span>
+    <div className="hidden xs:block sm:block">
+      <span className="block text-lg sm:text-xl font-bold tracking-tight">ROYAL<span className="text-primary">VIP</span></span>
       <span className="block text-xs tracking-widest text-muted-foreground">LIMO DUBAI</span>
     </div>
   </div>
@@ -24,7 +24,6 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -33,6 +32,26 @@ const Navigation = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (isMenuOpen && !target.closest('nav')) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener('click', handleClickOutside);
+      return () => document.removeEventListener('click', handleClickOutside);
+    }
+  }, [isMenuOpen]);
 
   const navItems = [
     { label: "Home", href: "/" },
@@ -105,41 +124,42 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden py-4 animate-fade-in">
-            <div className="flex flex-col space-y-2 bg-secondary/50 p-4 rounded-lg">
+            <div className="flex flex-col space-y-1 bg-secondary/50 p-3 rounded-lg backdrop-blur-sm">
               {navItems.map((item, index) => (
                 <Link
                   key={item.label}
                   to={item.href}
-                  className={`font-medium px-4 py-3 rounded-md transition-all duration-300 ${
+                  className={`font-medium px-4 py-4 rounded-md transition-all duration-300 text-center touch-manipulation ${
                     location.pathname === item.href 
                       ? 'bg-primary/10 text-primary' 
-                      : 'text-foreground hover:bg-secondary hover:text-primary'
+                      : 'text-foreground hover:bg-secondary hover:text-primary active:bg-primary/5'
                   }`}
                   style={{ animationDelay: `${index * 50}ms` }}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
-              <div className="flex items-center justify-center space-x-4 pt-4 mb-4">
-                <a href="https://www.instagram.com/royalviplimosdubai?igsh=MTF6ODdyZnA4dWMybQ==" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                  <Instagram className="h-5 w-5" />
+              <div className="flex items-center justify-center space-x-6 py-4 my-2">
+                <a href="https://www.instagram.com/royalviplimosdubai?igsh=MTF6ODdyZnA4dWMybQ==" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors p-2 touch-manipulation">
+                  <Instagram className="h-6 w-6" />
                 </a>
-                <a href="https://www.facebook.com/share/171XYJmAcw/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                  <Facebook className="h-5 w-5" />
+                <a href="https://www.facebook.com/share/171XYJmAcw/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors p-2 touch-manipulation">
+                  <Facebook className="h-6 w-6" />
                 </a>
               </div>
-              <div className="flex flex-col space-y-2 pt-4 border-t border-border">
-                <Link to="/signup">
-                  <Button variant="outline" size="sm" className="border-primary/20 text-foreground hover:bg-primary/10 hover:text-primary justify-start">
+              <div className="flex flex-col space-y-3 pt-3 border-t border-border">
+                <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
+                  <Button variant="outline" size="default" className="w-full border-primary/20 text-foreground hover:bg-primary/10 hover:text-primary justify-center py-3 touch-manipulation">
                     <User className="h-4 w-4 mr-2" />
                     Sign Up
                   </Button>
                 </Link>
-                <Link to="/booking">
-                  <Button variant="default" size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground justify-start">
+                <Link to="/booking" onClick={() => setIsMenuOpen(false)}>
+                  <Button variant="default" size="default" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground justify-center py-3 touch-manipulation">
                     <Phone className="h-4 w-4 mr-2" />
                     Book Now
-                    <ChevronRight className="h-4 w-4 ml-auto" />
+                    <ChevronRight className="h-4 w-4 ml-2" />
                   </Button>
                 </Link>
               </div>

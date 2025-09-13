@@ -9,47 +9,39 @@ const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Premium hero slides with diverse luxury imagery
+  // Premium hero slides with luxury vehicles
   const heroSlides = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=1920&h=1080&fit=crop&crop=center",
-      title: "Dubai Skyline",
-      subtitle: "Luxury Destination",
-      description: "Experience the breathtaking beauty of Dubai's iconic skyline and modern architecture with our premium transportation services",
-      features: ["City Tours", "Luxury Views", "Premium Service"]
+      image: "https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      title: "Luxury Range Rover",
+      subtitle: "Premium SUV Collection",
+      description: "Experience the ultimate in luxury with our Range Rover fleet. Perfect for executive travel and special occasions.",
+      features: ["Premium Interior", "Advanced Safety", "Executive Comfort"]
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1920&h=1080&fit=crop&crop=center",
-      title: "Dubai Marina",
-      subtitle: "Modern Architecture",
-      description: "Discover the stunning modern architecture and iconic buildings that define Dubai's skyline",
-      features: ["City Architecture", "Modern Design", "Urban Luxury"]
+      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      title: "UAE Skyline Views",
+      subtitle: "Luxury Transportation Across UAE",
+      description: "Discover the beauty of the UAE while traveling in our premium fleet. Experience luxury transportation with stunning skyline views.",
+      features: ["Scenic Routes", "Premium Comfort", "Professional Service"]
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=1920&h=1080&fit=crop&crop=center",
-      title: "Burj Khalifa",
-      subtitle: "Iconic Landmark",
-      description: "Visit the world's tallest building and experience Dubai's most famous landmark",
-      features: ["Landmark Tours", "City Views", "Premium Experience"]
+      image: "https://images.unsplash.com/photo-1518684079-3c830dcef090?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      title: "Dubai City Experience",
+      subtitle: "Iconic Dubai Transportation",
+      description: "Explore Dubai's magnificent cityscape with our luxury vehicle service. Perfect for business trips and sightseeing tours.",
+      features: ["City Tours", "Business Travel", "Luxury Fleet"]
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&h=1080&fit=crop&crop=center",
-      title: "Dubai Downtown",
-      subtitle: "Urban Excellence",
-      description: "Journey through the heart of Dubai's business district and luxury shopping destinations",
-      features: ["Downtown Tours", "Shopping Districts", "Business Centers"]
-    },
-    {
-      id: 5,
-      image: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=1920&h=1080&fit=crop&crop=center",
-      title: "Dubai at Night",
-      subtitle: "City of Lights",
-      description: "Experience Dubai's spectacular nighttime skyline with its illuminated skyscrapers and landmarks",
-      features: ["Night Tours", "City Lights", "Evening Luxury"]
+      image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      title: "Mercedes S-Class",
+      subtitle: "Executive Elegance",
+      description: "Travel in sophisticated style with our Mercedes S-Class fleet. The perfect choice for discerning clients seeking luxury.",
+      features: ["Luxury Interior", "Smooth Performance", "Premium Service"]
     }
   ];
 
