@@ -303,132 +303,13 @@ const Contact = () => {
                 </CardContent>
               </Card>
 
-              {/* Quick Booking */}
-              <Card className="bg-gradient-to-r from-primary/10 to-accent/10 border-primary">
-                <CardContent className="p-6 text-center">
-                  <MessageCircle className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold mb-2 text-foreground">Quick Booking</h3>
-                  <p className="text-muted-foreground mb-4">
-                    Ready to book now? Call us directly for immediate assistance.
-                  </p>
-                  <Button 
-                    size="lg"
-                    className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground"
-                    onClick={() => window.open('tel:+15551234567', '_self')}
-                  >
-                    <Phone className="h-5 w-5 mr-2" />
-                    Call Now
-                  </Button>
-                </CardContent>
-              </Card>
+
             </div>
           </div>
         </div>
       </section>
 
-      {/* Google Maps Section */}
-      <section className="py-20 bg-gradient-to-b from-secondary/20 to-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Find Us on the Map
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Visit our luxury showroom or use our interactive map to plan your route to any of our locations.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Embedded Google Map */}
-            <div className="lg:col-span-2">
-              <Card className="bg-card border-border shadow-luxury overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="relative w-full h-96 lg:h-[500px]">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878459418!3d40.74844097932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5c!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1647834539283!5m2!1sen!2sus"
-                      width="100%"
-                      height="100%"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      className="rounded-lg"
-                      title="Luxury Car Rental Location"
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Map Actions & Info */}
-            <div className="space-y-6">
-              {/* Open in Google Maps */}
-              <Card className="bg-card border-border hover:shadow-luxury transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="text-center">
-                    <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/20 rounded-full text-primary mb-4">
-                      <NavigationIcon className="h-6 w-6" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 text-foreground">Get Directions</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Open in Google Maps for turn-by-turn navigation to our showroom.
-                    </p>
-                    <Button 
-                      className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground"
-                      onClick={() => window.open('https://maps.google.com/?q=123+Luxury+Boulevard,+New+York,+NY+10001', '_blank')}
-                    >
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Open in Google Maps
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Location Details */}
-              <Card className="bg-card border-border">
-                <CardContent className="p-6">
-                  <div className="text-center">
-                    <div className="inline-flex items-center justify-center w-12 h-12 bg-accent/20 rounded-full text-accent mb-4">
-                      <MapPin className="h-6 w-6" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 text-foreground">Main Showroom</h3>
-                    <div className="space-y-2 text-muted-foreground">
-                      <p className="font-medium">123 Luxury Boulevard</p>
-                      <p>Downtown District</p>
-                      <p>New York, NY 10001</p>
-                    </div>
-                    <div className="mt-4 pt-4 border-t border-border">
-                      <p className="text-sm text-muted-foreground mb-2">Parking Available</p>
-                      <p className="text-sm text-muted-foreground">Valet Service Included</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Quick Contact */}
-              <Card className="bg-gradient-to-r from-primary/10 to-accent/10 border-primary">
-                <CardContent className="p-6">
-                  <div className="text-center">
-                    <Phone className="h-8 w-8 text-primary mx-auto mb-3" />
-                    <h3 className="text-lg font-bold mb-2 text-foreground">Need Help Finding Us?</h3>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Call us for assistance with directions or parking.
-                    </p>
-                    <Button 
-                      variant="outline"
-                      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                      onClick={() => window.open('tel:+15551234567', '_self')}
-                    >
-                      <Phone className="h-4 w-4 mr-2" />
-                      Call for Directions
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section className="py-20">

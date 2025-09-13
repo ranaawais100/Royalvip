@@ -116,99 +116,99 @@ const FloatingChatbot: React.FC = () => {
   return (
     <>
       {/* Floating Button */}
-      <div className="fixed bottom-6 right-20 z-50 sm:bottom-6 sm:right-20">
+      <div className="fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6 md:bottom-6 md:right-20">
         <button
           onClick={() => setIsOpen(!isOpen)}
           data-chatbot-trigger
-          className="w-14 h-14 sm:w-16 sm:h-16 bg-black border-2 border-yellow-400 rounded-full flex items-center justify-center shadow-2xl hover:shadow-yellow-400/30 transition-all duration-300 hover:scale-110 active:scale-95 group touch-manipulation"
+          className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-black border-2 border-yellow-400 rounded-full flex items-center justify-center shadow-2xl hover:shadow-yellow-400/30 transition-all duration-300 hover:scale-110 active:scale-95 group touch-manipulation"
           style={{
             background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)',
             boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.2)'
           }}
         >
           {isOpen ? (
-            <X className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400 group-hover:text-yellow-300 transition-colors" />
+            <X className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-yellow-400 group-hover:text-yellow-300 transition-colors" />
           ) : (
-            <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400 group-hover:text-yellow-300 transition-colors" />
+            <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-yellow-400 group-hover:text-yellow-300 transition-colors" />
           )}
         </button>
       </div>
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-20 w-96 max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-8rem)] bg-black border border-yellow-400/30 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden md:w-96 sm:w-80 xs:w-72">
+        <div className="fixed bottom-16 right-4 w-[calc(100vw-2rem)] max-w-sm h-[70vh] max-h-[500px] sm:bottom-20 sm:right-6 sm:w-80 sm:max-w-sm sm:h-[500px] md:bottom-24 md:right-20 md:w-96 md:max-w-md bg-black border border-yellow-400/30 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 p-4 flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
-                <MessageCircle className="w-4 h-4 text-yellow-400" />
+          <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 p-3 sm:p-4 flex items-center justify-between">
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-black rounded-full flex items-center justify-center">
+                <MessageCircle className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400" />
               </div>
               <div>
-                <h3 className="font-bold text-black text-sm">Royal VIP Assistant</h3>
-                <p className="text-black/70 text-xs">Online • Luxury Concierge</p>
+                <h3 className="font-bold text-black text-xs sm:text-sm">Royal VIP Assistant</h3>
+                <p className="text-black/70 text-xs hidden sm:block">Online • Luxury Concierge</p>
               </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-black hover:text-black/70 transition-colors"
+              className="text-black hover:text-black/70 transition-colors p-1"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
 
           {/* Messages Area */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-gradient-to-b from-gray-900 to-black">
+          <div className="flex-1 p-2 sm:p-4 overflow-y-auto space-y-2 sm:space-y-4 bg-gradient-to-b from-gray-900 to-black">
             {messages.map((message) => (
               <div
                 key={message.id}
                 className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-[80%] p-3 rounded-2xl ${
+                  className={`max-w-[85%] sm:max-w-[80%] p-2 sm:p-3 rounded-xl sm:rounded-2xl ${
                     message.isUser
                       ? 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-black'
                       : 'bg-gray-800 text-yellow-400 border border-yellow-400/20'
                   }`}
                 >
-                  <p className="text-sm leading-relaxed">{message.text}</p>
+                  <p className="text-xs sm:text-sm leading-relaxed">{message.text}</p>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Quick Actions */}
-          <div className="p-3 border-t border-yellow-400/20">
-            <div className="flex flex-wrap gap-2 mb-3 sm:flex-nowrap">
+          <div className="p-2 sm:p-3 border-t border-yellow-400/20">
+            <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3">
               {quickActions.map((action) => (
                 <button
                   key={action.id}
                   onClick={action.action}
-                  className="flex-1 min-w-[80px] bg-yellow-400/10 hover:bg-yellow-400/20 border border-yellow-400/30 rounded-lg p-2 flex items-center justify-center space-x-1 transition-all duration-200 hover:scale-105 active:scale-95"
+                  className="flex-1 min-w-[70px] sm:min-w-[80px] bg-yellow-400/10 hover:bg-yellow-400/20 border border-yellow-400/30 rounded-md sm:rounded-lg p-1.5 sm:p-2 flex items-center justify-center space-x-0.5 sm:space-x-1 transition-all duration-200 hover:scale-105 active:scale-95"
                 >
-                  {action.icon}
-                  <span className="text-yellow-400 text-xs font-medium hidden sm:inline">{action.text}</span>
-                  <span className="text-yellow-400 text-xs font-medium sm:hidden">{action.text.split(' ')[0]}</span>
+                  <span className="w-3 h-3 sm:w-4 sm:h-4">{action.icon}</span>
+                  <span className="text-yellow-400 text-xs font-medium hidden md:inline">{action.text}</span>
+                  <span className="text-yellow-400 text-xs font-medium md:hidden">{action.text.split(' ')[0]}</span>
                 </button>
               ))}
             </div>
           </div>
 
           {/* Input Area */}
-          <div className="p-4 border-t border-yellow-400/20">
-            <div className="flex space-x-2">
+          <div className="p-2 sm:p-4 border-t border-yellow-400/20">
+            <div className="flex space-x-1 sm:space-x-2">
               <input
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Ask me anything about Royal VIP Limos Dubai..."
-                className="flex-1 bg-gray-800 border border-yellow-400/30 rounded-full px-4 py-2 text-white placeholder-yellow-400/50 focus:outline-none focus:border-yellow-400 text-sm"
+                placeholder="Ask about our services..."
+                className="flex-1 bg-gray-800 border border-yellow-400/30 rounded-full px-3 sm:px-4 py-2 text-white placeholder-yellow-400/50 focus:outline-none focus:border-yellow-400 text-xs sm:text-sm"
               />
               <button
                 onClick={handleSendMessage}
-                className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center hover:scale-105 transition-transform"
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center hover:scale-105 transition-transform"
               >
-                <Send className="w-4 h-4 text-black" />
+                <Send className="w-3 h-3 sm:w-4 sm:h-4 text-black" />
               </button>
             </div>
           </div>

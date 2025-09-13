@@ -61,27 +61,27 @@ const About = () => {
 
   const milestones = [
     {
-      year: "2009",
+      year: "2015",
       title: "Company Founded",
       description: "Started with a vision to redefine luxury transportation"
     },
     {
-      year: "2012",
+      year: "2017",
       title: "Fleet Expansion",
       description: "Expanded to 50+ vehicles and introduced exotic car rentals"
     },
     {
-      year: "2016",
+      year: "2019",
       title: "Technology Integration",
       description: "Launched mobile app and GPS tracking for enhanced service"
     },
     {
-      year: "2020",
+      year: "2021",
       title: "Sustainability Initiative",
       description: "Introduced hybrid and electric vehicles to our fleet"
     },
     {
-      year: "2024",
+      year: "2023",
       title: "Industry Leader",
       description: "Recognized as the premier luxury car rental service"
     }
@@ -141,8 +141,7 @@ const About = () => {
                 and aspirations.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                Founded in 2009 by James Mitchell, a former automotive executive with a passion for 
-                luxury vehicles, Royal VIP Limos started with just five premium cars and a vision to create 
+                Founded in 2015, Royal VIP Limos started with just five premium cars and a vision to create 
                 the most exclusive car rental experience in the industry.
               </p>
               <p className="text-lg text-muted-foreground mb-8">
@@ -267,14 +266,6 @@ const About = () => {
               onClick={handleBookExperience}
             >
               Book Your Experience
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-              onClick={handleContactTeam}
-            >
-              Contact Our Team
             </Button>
           </div>
         </div>

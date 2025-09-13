@@ -13,7 +13,7 @@ const Hero = () => {
   const heroSlides = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=1920&h=1080&fit=crop&crop=center",
       title: "Dubai Skyline",
       subtitle: "Luxury Destination",
       description: "Experience the breathtaking beauty of Dubai's iconic skyline and modern architecture with our premium transportation services",
@@ -21,28 +21,35 @@ const Hero = () => {
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&h=1080&fit=crop&crop=center",
-      title: "UAE Buildings",
+      image: "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1920&h=1080&fit=crop&crop=center",
+      title: "Dubai Marina",
       subtitle: "Modern Architecture",
-      description: "Discover the stunning modern architecture and iconic buildings that define the UAE's skyline",
+      description: "Discover the stunning modern architecture and iconic buildings that define Dubai's skyline",
       features: ["City Architecture", "Modern Design", "Urban Luxury"]
     },
-
+    {
+      id: 3,
+      image: "https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=1920&h=1080&fit=crop&crop=center",
+      title: "Burj Khalifa",
+      subtitle: "Iconic Landmark",
+      description: "Visit the world's tallest building and experience Dubai's most famous landmark",
+      features: ["Landmark Tours", "City Views", "Premium Experience"]
+    },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&crop=center",
-      title: "UAE Mountains",
-      subtitle: "Rugged Beauty",
-      description: "Journey through the dramatic mountain ranges and rocky landscapes of the UAE",
-      features: ["Mountain Tours", "Hiking Trails", "Natural Beauty"]
+      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&h=1080&fit=crop&crop=center",
+      title: "Dubai Downtown",
+      subtitle: "Urban Excellence",
+      description: "Journey through the heart of Dubai's business district and luxury shopping destinations",
+      features: ["Downtown Tours", "Shopping Districts", "Business Centers"]
     },
     {
       id: 5,
-      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&h=1080&fit=crop&crop=center",
-      title: "UAE Oasis",
-      subtitle: "Natural Paradise",
-      description: "Visit the lush oases and palm groves that dot the UAE's diverse landscape",
-      features: ["Oasis Tours", "Palm Groves", "Natural Springs"]
+      image: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=1920&h=1080&fit=crop&crop=center",
+      title: "Dubai at Night",
+      subtitle: "City of Lights",
+      description: "Experience Dubai's spectacular nighttime skyline with its illuminated skyscrapers and landmarks",
+      features: ["Night Tours", "City Lights", "Evening Luxury"]
     }
   ];
 
