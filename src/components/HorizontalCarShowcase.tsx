@@ -112,8 +112,7 @@ const HorizontalCarShowcase: React.FC<HorizontalCarShowcaseProps> = ({
                 {category.cars.map((car: Car) => (
                   <div 
                     key={car.id}
-                    className="flex-shrink-0 w-[380px] lg:w-[400px]"
-                    style={{ minWidth: '380px' }}
+                    className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[340px] xl:w-[360px]"
                   >
                     <AutoCarCard car={car} />
                   </div>

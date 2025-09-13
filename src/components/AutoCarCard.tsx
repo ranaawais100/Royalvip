@@ -28,7 +28,7 @@ const AutoCarCard: React.FC<AutoCarCardProps> = ({
 
 
   return (
-    <Card className={`group overflow-hidden bg-gradient-to-br from-gray-900 to-black border-gray-800 hover:shadow-2xl hover:shadow-yellow-500/20 transition-all duration-500 hover:-translate-y-2 hover:border-yellow-500/30 ${className}`}>
+    <Card className={`group overflow-hidden bg-gradient-to-br from-gray-900 to-black border-gray-800 hover:shadow-2xl hover:shadow-yellow-500/20 transition-all duration-500 hover:-translate-y-2 hover:border-yellow-500/30 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl ${className}`}>
       <div className="relative overflow-hidden">
         {isImageLoading && (
           <div className="absolute inset-0 bg-gray-900 flex items-center justify-center z-10">
@@ -38,7 +38,7 @@ const AutoCarCard: React.FC<AutoCarCardProps> = ({
         <img
           src={car.frontImage}
           alt={car.name}
-          className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"
+          className="w-full h-40 sm:h-44 md:h-48 lg:h-56 object-cover group-hover:scale-110 transition-transform duration-700"
           onLoad={handleImageLoad}
           loading="lazy"
         />

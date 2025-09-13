@@ -171,10 +171,10 @@ const FeaturedCars = () => {
           {featuredCars.map((car) => (
             <div 
               key={car.id} 
-              className="group relative bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-xl shadow-2xl hover:shadow-[0_20px_40px_rgba(212,175,55,0.3)] transition-all duration-500 transform hover:scale-[1.02] cursor-pointer overflow-hidden border border-gray-700/50 backdrop-blur-sm flex-shrink-0 w-[85vw] sm:w-[350px] lg:w-[380px]"
+              className="group relative bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-xl shadow-2xl hover:shadow-[0_20px_40px_rgba(212,175,55,0.3)] transition-all duration-500 transform hover:scale-[1.02] cursor-pointer overflow-hidden border border-gray-700/50 backdrop-blur-sm flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[340px] xl:w-[360px]"
             >
               {/* Image Container */}
-              <div className="relative h-48 overflow-hidden rounded-t-xl">
+              <div className="relative h-40 sm:h-44 md:h-48 overflow-hidden rounded-t-xl">
                 <img
                   src={car.image}
                   alt={car.name}
