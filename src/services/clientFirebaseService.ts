@@ -50,8 +50,8 @@ class ClientFirebaseService {
     try {
       console.log(`🔥 ClientFirebaseService: Getting documents from ${collectionName}`);
       
-      let q = collection(this.db, collectionName);
-      let queryRef = q;
+      const collectionRef = collection(this.db, collectionName);
+      let queryRef: any = collectionRef;
 
       // Apply where conditions
       if (options.whereConditions) {

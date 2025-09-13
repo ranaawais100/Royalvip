@@ -426,7 +426,7 @@ const HolidayPackages = () => {
                 {/* Price and Book Button */}
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="text-2xl font-bold text-primary">AED {pkg.price}</span>
+                    <span className="text-2xl font-bold text-primary">د.إ</span>
                     <span className="text-muted-foreground text-sm ml-1">per person</span>
                   </div>
                   <Button 

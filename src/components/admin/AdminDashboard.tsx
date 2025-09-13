@@ -1,22 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminDashboard.css';
+import firebaseService, { BookingData } from '@/services/firebaseService';
+import emailService from '@/services/emailService';
 
-interface Booking {
-  id: string;
-  name: string;
-  email: string;
-  phone: string;
-  date: string;
-  time: string;
-  pickupLocation: string;
-  dropLocation: string;
-  vehicleType: string;
-  passengers: number;
-  specialRequests?: string;
-  status: 'pending' | 'confirmed' | 'in-progress' | 'completed' | 'cancelled';
-  createdAt: string;
-}
+// Using BookingData from firebaseService
+type Booking = BookingData;
 
 interface ResponseData {
   subject: string;
@@ -31,38 +20,34 @@ const AdminDashboard: React.FC = () => {
   const [sendingResponse, setSendingResponse] = useState(false);
   const [updatingStatus, setUpdatingStatus] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>('all');
+  const [user, setUser] = useState<any>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (checkAuth()) {
-      fetchBookings();
-    }
-  }, []);
+    // Set up Firebase auth state listener
+    const unsubscribe = firebaseService.onAuthStateChange(async (user) => {
+      if (user) {
+        const isAdmin = await firebaseService.isUserAdmin(user.email || '');
+        if (isAdmin) {
+          setUser(user);
+          fetchBookings();
+        } else {
+          navigate('/admin/login');
+        }
+      } else {
+        navigate('/admin/login');
+      }
+    });
 
-  const checkAuth = () => {
-    const token = localStorage.getItem('adminToken');
-    if (!token) {
-      navigate('/admin/login');
-      return false;
-    }
-    return true;
-  };
+    return () => unsubscribe();
+  }, [navigate]);
+
+  // Removed checkAuth - now handled by Firebase auth state listener
 
   const fetchBookings = async () => {
     try {
-      const token = localStorage.getItem('adminToken');
-      const response = await fetch('http://localhost:5000/api/admin/bookings', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        setBookings(data.data.bookings || []);
-      } else {
-        console.error('Failed to fetch bookings:', data.message);
-      }
+      const bookingsData = await firebaseService.getBookings();
+      setBookings(bookingsData);
     } catch (error) {
       console.error('Error fetching bookings:', error);
     } finally {
@@ -73,28 +58,36 @@ const AdminDashboard: React.FC = () => {
   const updateBookingStatus = async (bookingId: string, status: string) => {
     setUpdatingStatus(bookingId);
     try {
-      const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:5000/api/admin/bookings/${bookingId}/status`, {
-        method: 'PATCH',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ status })
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        setBookings(prev => prev.map(booking => 
-          booking.id === bookingId ? { ...booking, status: status as any } : booking
-        ));
-        alert('Status updated successfully! Email notification sent to client.');
-      } else {
-        alert('Failed to update status: ' + data.message);
+      // Get the current booking data before updating
+      const currentBooking = bookings.find(booking => booking.id === bookingId);
+      if (!currentBooking) {
+        throw new Error('Booking not found');
       }
-    } catch (error) {
+
+      const oldStatus = currentBooking.status;
+      
+      // Update status in Firebase
+      await firebaseService.updateBookingStatus(bookingId, status as BookingData['status']);
+      
+      // Update local state
+      const updatedBooking = { ...currentBooking, status: status as BookingData['status'], updatedAt: new Date() };
+      setBookings(prev => prev.map(booking => 
+        booking.id === bookingId ? updatedBooking : booking
+      ));
+
+      // Send email notification to customer about status change
+      try {
+        await emailService.sendStatusUpdateEmail(updatedBooking, oldStatus);
+        console.log('Status update email sent to customer');
+      } catch (emailError) {
+        console.error('Failed to send status update email:', emailError);
+        // Don't fail the status update if email fails
+      }
+      
+      alert('Status updated successfully!');
+    } catch (error: any) {
       console.error('Error updating booking status:', error);
-      alert('Error updating booking status');
+      alert('Error updating booking status: ' + error.message);
     } finally {
       setUpdatingStatus(null);
     }
@@ -108,36 +101,36 @@ const AdminDashboard: React.FC = () => {
 
     setSendingResponse(true);
     try {
-      const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:5000/api/admin/bookings/${selectedBooking.id}/respond`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(responseData)
-      });
+      // Create a custom email template for admin responses
+      const customBookingData = {
+        ...selectedBooking,
+        specialRequests: `Admin Response:\n\nSubject: ${responseData.subject}\n\nMessage: ${responseData.message}`
+      };
 
-      const data = await response.json();
-      if (data.success) {
-        alert('Response sent successfully! Email delivered to client.');
-        setSelectedBooking(null);
-        setResponseData({ subject: '', message: '' });
-      } else {
-        alert('Failed to send response: ' + data.message);
-      }
+      // Send email using the customer template with custom message
+      await emailService.sendCustomerConfirmation(customBookingData);
+      
+      alert(`Response sent successfully to ${selectedBooking.email}!`);
+      setSelectedBooking(null);
+      setResponseData({ subject: '', message: '' });
     } catch (error) {
       console.error('Error sending response:', error);
-      alert('Error sending response');
+      alert('Error sending response: ' + (error as Error).message);
     } finally {
       setSendingResponse(false);
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem('adminToken');
-    localStorage.removeItem('adminEmail');
-    navigate('/admin/login');
+  const logout = async () => {
+    try {
+      await firebaseService.signOutAdmin();
+      localStorage.removeItem('adminEmail');
+      navigate('/admin/login');
+    } catch (error) {
+      console.error('Error signing out:', error);
+      // Still navigate even if sign out fails
+      navigate('/admin/login');
+    }
   };
 
   const filteredBookings = bookings.filter(booking => {
@@ -171,7 +164,7 @@ const AdminDashboard: React.FC = () => {
         <div className="admin-header-content">
           <h1>🚗 Royal VIP Limos - Admin Dashboard</h1>
           <div className="admin-header-actions">
-            <span>Welcome, {localStorage.getItem('adminEmail')}</span>
+            <span>Welcome, {user?.email || localStorage.getItem('adminEmail')}</span>
             <button onClick={logout} className="logout-btn">🚪 Logout</button>
           </div>
         </div>

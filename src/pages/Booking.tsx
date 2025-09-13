@@ -5,9 +5,12 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar, Clock, MapPin, Users, Phone, Mail, Car, Crown, CheckCircle } from "lucide-react";
+import { Calendar, Clock, MapPin, Users, Phone, Car, Crown, CheckCircle } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import firebaseService from "@/services/firebaseService";
+import emailService from "@/services/emailService";
+
 
 const Booking = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +23,7 @@ const Booking = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+
 
   // Handle URL parameters for pre-filled car name
   useEffect(() => {
@@ -45,40 +49,47 @@ const Booking = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     try {
-      // Prepare booking data for backend
+      // Prepare booking data for Firebase
       const bookingData = {
         name: `${formData.firstName} ${formData.lastName}`.trim(),
         email: formData.email,
         phone: formData.phone,
         vehicleType: formData.vehicleType,
-        passengers: formData.passengers
+        passengers: parseInt(formData.passengers) || 1
       };
 
-      // Send booking to backend
-      const response = await fetch('http://localhost:5000/api/bookings', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(bookingData)
-      });
-
-      const result = await response.json();
+      // Create booking using Firebase service
+      const bookingId = await firebaseService.createBooking(bookingData);
       
-      if (result.success) {
-        console.log("Booking submitted successfully:", result.data);
-        setIsSubmitted(true);
-      } else {
-        console.error("Booking failed:", result.message);
-        alert(`Booking failed: ${result.message}`);
+      // Get the complete booking data with ID for email
+      const completeBookingData = {
+        ...bookingData,
+        id: bookingId,
+        status: 'pending' as const,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      };
+
+      // Send email notifications (don't block on email failures)
+      try {
+        await emailService.sendBookingEmails(completeBookingData);
+        console.log("Email notifications sent successfully");
+      } catch (emailError) {
+        console.error("Failed to send email notifications:", emailError);
+        // Continue with booking success even if email fails
       }
-    } catch (error) {
+      
+      console.log("Booking submitted successfully with ID:", bookingId);
+      setIsSubmitted(true);
+    } catch (error: any) {
       console.error("Error submitting booking:", error);
-      alert("Failed to submit booking. Please try again.");
+      alert(error.message || "Failed to submit booking. Please try again.");
     }
   };
 
@@ -266,6 +277,8 @@ const Booking = () => {
                   </div>
                 </CardContent>
               </Card>
+
+
 
 
 

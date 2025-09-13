@@ -7,6 +7,8 @@ import { HelmetProvider } from "react-helmet-async";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import FloatingChatbot from "./components/FloatingChatbot";
 import FloatingCallButton from "./components/FloatingCallButton";
+// Import EmailJS debug utilities for browser console testing
+import "./utils/emailJSDebug";
 import Index from "./pages/Index";
 import Fleet from "./pages/Fleet";
 import Services from "./pages/Services";

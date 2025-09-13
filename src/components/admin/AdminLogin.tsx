@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminLogin.css';
+import firebaseService from '@/services/firebaseService';
 
 interface LoginFormData {
   email: string;
@@ -39,29 +40,29 @@ const AdminLogin: React.FC = () => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/admin/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        // Store token in localStorage
-        localStorage.setItem('adminToken', data.token);
-        localStorage.setItem('adminEmail', formData.email);
-        
-        // Redirect to admin dashboard
-        navigate('/admin/dashboard');
-      } else {
-        setError(data.message || 'Login failed');
+      // Sign in with Firebase Authentication
+      const user = await firebaseService.signInAdmin(formData.email, formData.password);
+      
+      // Check if user is admin
+      const isAdmin = await firebaseService.isUserAdmin(user.email || '');
+      
+      if (!isAdmin) {
+        await firebaseService.signOutAdmin();
+        setError('Access denied. Admin privileges required.');
+        return;
       }
-    } catch (error) {
+
+      // Update last login
+      await firebaseService.updateAdminLastLogin(user.email || '');
+      
+      // Store admin info in localStorage for convenience
+      localStorage.setItem('adminEmail', user.email || '');
+      
+      // Redirect to dashboard
+      navigate('/admin/dashboard');
+    } catch (error: any) {
       console.error('Login error:', error);
-      setError('Network error. Please try again.');
+      setError(error.message || 'Login failed. Please check your credentials.');
     } finally {
       setLoading(false);
     }

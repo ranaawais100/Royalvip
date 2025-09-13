@@ -38,19 +38,20 @@ const BlogAdmin: React.FC = () => {
   const categories = ['Services', 'Events', 'Business', 'Behind the Scenes', 'Travel'];
 
   // Check authentication on component mount
-  useEffect(() => {
-    const checkAuth = () => {
-      const token = localStorage.getItem('adminToken');
-      if (!token) {
-        navigate('/admin/login');
-        return false;
-      }
-      return true;
-    };
-    
-    checkAuth();
-  }, [navigate]);
+  const login_check = () => {
+    const token = localStorage.getItem('adminEmail');
+    if (!token) {
+      navigate('/admin/login');
+      return false;
+    }
+    return true;
+  }
 
+  // Check authentication when component mounts
+  useEffect(() => {
+    login_check();
+  }, [navigate]);
+    
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
