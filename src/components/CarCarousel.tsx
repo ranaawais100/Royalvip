@@ -76,8 +76,7 @@ const CarCarousel: React.FC<CarCarouselProps> = ({
                       loading="lazy"
                     />
                     
-                    {/* Overlay Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 dark:from-black/70 via-transparent to-transparent" />
+
                     
                     {/* Photos Badge */}
                     <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 px-2 py-1 bg-white/90 dark:bg-black/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-transparent">

@@ -12,14 +12,6 @@ const Hero = () => {
   // Premium hero slides with luxury vehicles
   const heroSlides = [
     {
-      id: 1,
-      image: "https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-      title: "Luxury Range Rover",
-      subtitle: "Premium SUV Collection",
-      description: "Experience the ultimate in luxury with our Range Rover fleet. Perfect for executive travel and special occasions.",
-      features: ["Premium Interior", "Advanced Safety", "Executive Comfort"]
-    },
-    {
       id: 2,
       image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
       title: "UAE Skyline Views",
@@ -113,10 +105,7 @@ const Hero = () => {
               }}
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, (max-width: 1280px) 100vw, 100vw"
             />
-            {/* Enhanced Gradient Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
-            {/* Luxury Gold Accent Overlay */}
+            {/* Luxury Gold Accent Overlay Only */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
           </div>
         ))}

@@ -41,7 +41,7 @@ const SimpleCarCard: React.FC<SimpleCarCardProps> = ({
           onLoad={handleImageLoad}
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
         
         <Badge className="absolute top-4 left-4 bg-primary/90 text-primary-foreground backdrop-blur-sm">
           {car.category}

@@ -228,7 +228,7 @@ const UAEMap = () => {
                  >
                   <CardContent className="p-0">
                     {/* Responsive Image Container */}
-                    <div className="relative w-full h-24 sm:h-28 md:h-32 lg:h-24 xl:h-28 overflow-hidden">
+                    <div className="relative w-full h-32 sm:h-36 md:h-40 lg:h-32 xl:h-36 overflow-hidden">
                       <img 
                         src={location.image.replace('w=300&h=200', 'w=800&h=600')}
                         alt={location.name}
@@ -239,8 +239,8 @@ const UAEMap = () => {
                           objectFit: 'cover'
                         }}
                       />
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      {/* Light Overlay for better text readability */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                       
                       {/* VIP Badge */}
                       {location.vip && (
@@ -258,8 +258,8 @@ const UAEMap = () => {
                     </div>
                     
                     {/* Content Section */}
-                    <div className="p-3">
-                      <div className="space-y-2">
+                    <div className="p-4 sm:p-3">
+                      <div className="space-y-2 sm:space-y-1.5">
                         <h4 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors duration-300 truncate">{location.name}</h4>
                         <p className="text-xs text-muted-foreground line-clamp-2">{location.description}</p>
                         <div className="flex items-center justify-between">
