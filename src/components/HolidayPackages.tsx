@@ -377,14 +377,13 @@ const HolidayPackages = () => {
             {duplicatedPackages.map((pkg, index) => (
             <Card 
               key={`${pkg.id}-${index}`}
-              className="flex-shrink-0 w-[380px] lg:w-[400px] group overflow-hidden bg-card border-border hover:shadow-luxury transition-all duration-500 hover:-translate-y-2 hover:border-primary/30"
-              style={{ minWidth: '380px' }}
+              className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[340px] xl:w-[360px] group overflow-hidden bg-card border-border hover:shadow-luxury transition-all duration-500 hover:-translate-y-2 hover:border-primary/30"
             >
               <div className="relative overflow-hidden">
                 <img 
                   src={pkg.image} 
                   alt={pkg.name}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-40 sm:h-44 md:h-48 object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <Badge className="absolute top-4 left-4 bg-primary/90 text-primary-foreground backdrop-blur-sm">
@@ -396,8 +395,8 @@ const HolidayPackages = () => {
                 </div>
               </div>
               
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
+              <CardContent className="p-4 sm:p-5 md:p-6">
+                <h3 className="text-lg sm:text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
                   {pkg.name}
                 </h3>
                 <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
@@ -426,15 +425,16 @@ const HolidayPackages = () => {
                 {/* Price and Book Button */}
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="text-2xl font-bold text-primary">د.إ</span>
+                    <span className="text-xl sm:text-2xl font-bold text-primary">د.إ</span>
                     <span className="text-muted-foreground text-sm ml-1">per person</span>
                   </div>
                   <Button 
                     onClick={() => handleBookNow(pkg)}
-                    className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
+                    className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 text-sm sm:text-base px-3 sm:px-4"
                   >
-                    <Calendar className="h-4 w-4 mr-2" />
-                    Book Now
+                    <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                    <span className="hidden sm:inline">Book Now</span>
+                    <span className="sm:hidden">Book</span>
                   </Button>
                 </div>
               </CardContent>
