@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar, Clock, MapPin, Users, Phone, Car, Crown, CheckCircle } from "lucide-react";
+import { Calendar, Clock, MapPin, Users, Phone, Crown, CheckCircle } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import firebaseService from "@/services/firebaseService";
@@ -228,55 +228,7 @@ const Booking = () => {
               </Card>
 
 
-              {/* Vehicle Selection */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <Car className="h-5 w-5 mr-2" />
-                    Vehicle Selection
-                  </CardTitle>
-                  <CardDescription>
-                    Choose your preferred luxury vehicle and specify passenger count.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="vehicleType">Vehicle Type *</Label>
-                      <Select value={formData.vehicleType} onValueChange={(value) => handleInputChange('vehicleType', value)}>
-                        <SelectTrigger className="h-12">
-                          <SelectValue placeholder="Select a vehicle" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {vehicleTypes.map((vehicle) => (
-                            <SelectItem key={vehicle.value} value={vehicle.value}>
-                              <div className="flex justify-between items-center w-full">
-                                <span>{vehicle.label}</span>
-                                <span className="text-primary font-semibold ml-4">{vehicle.price}</span>
-                              </div>
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="passengers">Number of Passengers *</Label>
-                      <Select value={formData.passengers} onValueChange={(value) => handleInputChange('passengers', value)}>
-                        <SelectTrigger className="h-12">
-                          <SelectValue placeholder="Select passenger count" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((num) => (
-                            <SelectItem key={num} value={num.toString()}>
-                              {num} {num === 1 ? 'Passenger' : 'Passengers'}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+
 
 
 

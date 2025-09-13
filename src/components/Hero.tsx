@@ -9,11 +9,11 @@ const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Premium hero slides with luxury imagery - all using the same background image (4th slide)
+  // Premium hero slides with diverse luxury imagery
   const heroSlides = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&h=1080&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&crop=center",
       title: "Dubai Skyline",
       subtitle: "Luxury Destination",
       description: "Experience the breathtaking beauty of Dubai's iconic skyline and modern architecture with our premium transportation services",
@@ -22,22 +22,15 @@ const Hero = () => {
     {
       id: 2,
       image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&h=1080&fit=crop&crop=center",
-      title: "Executive Limousine",
-      subtitle: "Business Class",
-      description: "Travel in style with our executive limousine service for corporate events and business meetings",
-      features: ["Corporate Service", "Executive Comfort", "Business Travel"]
+      title: "UAE Buildings",
+      subtitle: "Modern Architecture",
+      description: "Discover the stunning modern architecture and iconic buildings that define the UAE's skyline",
+      features: ["City Architecture", "Modern Design", "Urban Luxury"]
     },
-    {
-      id: 3,
-      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&h=1080&fit=crop&crop=center",
-      title: "Wedding Limousine",
-      subtitle: "Special Occasions",
-      description: "Make your special day unforgettable with our elegant wedding limousine service",
-      features: ["Wedding Service", "Elegant Design", "Special Events"]
-    },
+
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&h=1080&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&crop=center",
       title: "UAE Mountains",
       subtitle: "Rugged Beauty",
       description: "Journey through the dramatic mountain ranges and rocky landscapes of the UAE",
@@ -45,7 +38,7 @@ const Hero = () => {
     },
     {
       id: 5,
-      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&h=1080&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&h=1080&fit=crop&crop=center",
       title: "UAE Oasis",
       subtitle: "Natural Paradise",
       description: "Visit the lush oases and palm groves that dot the UAE's diverse landscape",

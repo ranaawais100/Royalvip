@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Car, Phone, Mail, MapPin, Facebook, Twitter, Instagram, ArrowRight } from "lucide-react";
+import { Car, Phone, Mail, MapPin, Facebook, Instagram, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import AfraaLogo from "@/assets/afaa5426-a4f0-4ba4-aa1c-dfedb79c594a_removalai_preview.png";
 import LatestBlogs from "./LatestBlogs";
@@ -87,14 +87,7 @@ const Footer = () => {
               >
                 <Facebook className="h-4 w-4" />
               </Button>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                onClick={() => window.open('https://twitter.com', '_blank')}
-              >
-                <Twitter className="h-4 w-4" />
-              </Button>
+
               <Button 
                 variant="outline" 
                 size="sm" 
