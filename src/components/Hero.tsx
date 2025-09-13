@@ -81,11 +81,11 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative min-h-screen h-screen max-h-screen overflow-hidden w-full">
       {/* Hero Carousel Container */}
-      <div className="relative w-full h-full min-h-[100vh] max-h-[100vh]">
-        {/* Responsive Image Container */}
-        <div className="absolute inset-0 w-full h-full">
+      <div className="relative w-full h-full min-h-[100vh] max-h-[100vh] overflow-hidden">
+        {/* Enhanced Responsive Image Container */}
+        <div className="absolute inset-0 w-full h-full flex items-center justify-center">
         {/* Background Images */}
         {heroSlides.map((slide, index) => (
           <div
@@ -100,15 +100,18 @@ const Hero = () => {
               src={slide.image}
               alt={slide.title}
               className="w-full h-full object-cover object-center transform transition-transform duration-1500 ease-out
-                         sm:object-cover md:object-cover lg:object-cover xl:object-cover
-                         scale-100 sm:scale-105 md:scale-110 lg:scale-105 xl:scale-100
-                         hover:scale-110 sm:hover:scale-115 md:hover:scale-120 lg:hover:scale-115 xl:hover:scale-110"
+                         xs:object-cover sm:object-cover md:object-cover lg:object-cover xl:object-cover 2xl:object-cover
+                         scale-100 xs:scale-102 sm:scale-105 md:scale-108 lg:scale-105 xl:scale-102 2xl:scale-100
+                         hover:scale-110 xs:hover:scale-112 sm:hover:scale-115 md:hover:scale-118 lg:hover:scale-115 xl:hover:scale-112 2xl:hover:scale-110
+                         min-h-screen max-h-screen"
               loading={index === 0 ? "eager" : "lazy"}
               style={{
-                aspectRatio: 'auto',
+                aspectRatio: '16/9',
                 minHeight: '100vh',
-                maxHeight: '100vh'
+                maxHeight: '100vh',
+                objectPosition: 'center center'
               }}
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, (max-width: 1280px) 100vw, 100vw"
             />
             {/* Enhanced Gradient Overlays */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
