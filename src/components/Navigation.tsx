@@ -10,10 +10,10 @@ const RoyalVIPLimosLogo = () => (
     <img 
       src={AfraaLogo} 
       alt="Royal VIP Limos" 
-      className="h-10 sm:h-12 w-auto mr-2 sm:mr-3"
+      className="h-8 sm:h-10 lg:h-12 w-auto mr-2 sm:mr-3"
     />
-    <div className="hidden xs:block sm:block">
-      <span className="block text-lg sm:text-xl font-bold tracking-tight">ROYAL<span className="text-primary">VIP</span></span>
+    <div className="block">
+      <span className="block text-sm sm:text-lg lg:text-xl font-bold tracking-tight">ROYAL<span className="text-primary">VIP</span></span>
       <span className="block text-xs tracking-widest text-muted-foreground">LIMO DUBAI</span>
     </div>
   </div>
