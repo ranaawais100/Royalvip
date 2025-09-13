@@ -156,7 +156,7 @@ const BlogDetails: React.FC = () => {
             target.src = '/placeholder.svg';
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+
         
         {/* Category Badge */}
         <div className="absolute top-8 left-8">
@@ -307,7 +307,7 @@ const BlogDetails: React.FC = () => {
                         target.src = '/placeholder.svg';
                       }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
                   </div>
                   
                   <div className="p-6">

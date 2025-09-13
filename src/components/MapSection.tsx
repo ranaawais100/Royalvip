@@ -191,8 +191,7 @@ const UAEMap = () => {
                       className="rounded-xl"
                     ></iframe>
                     
-                    {/* Luxury Map Overlay */}
-                     <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-primary/10 pointer-events-none rounded-xl" />
+
                      <div className="absolute top-4 left-4 bg-gradient-to-r from-primary/90 to-accent/90 backdrop-blur-sm rounded-lg px-3 py-1.5">
                        <p className="text-xs font-semibold text-white">LIVE MAP</p>
                      </div>
@@ -239,8 +238,7 @@ const UAEMap = () => {
                           objectFit: 'cover'
                         }}
                       />
-                      {/* Light Overlay for better text readability */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+
                       
                       {/* VIP Badge */}
                       {location.vip && (

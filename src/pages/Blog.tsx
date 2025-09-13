@@ -43,7 +43,7 @@ const Blog: React.FC = () => {
       <Navigation />
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-black via-gray-900 to-black py-20">
-        <div className="absolute inset-0 bg-black/50"></div>
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
@@ -124,7 +124,7 @@ const Blog: React.FC = () => {
                     target.src = '/placeholder.svg';
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
                 
                 {/* Category Badge */}
                 <div className="absolute top-4 left-4">

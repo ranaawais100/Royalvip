@@ -182,8 +182,7 @@ const FeaturedCars = () => {
                   loading="lazy"
                 />
                 
-                {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+
                 
                 {/* Photos Badge */}
                 <div className="absolute bottom-3 left-3 px-2 py-1 bg-black/80 backdrop-blur-sm rounded-full">

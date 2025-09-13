@@ -129,7 +129,7 @@ const LatestBlogs: React.FC<LatestBlogsProps> = ({
                     target.src = '/placeholder.svg';
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
                 
                 {/* Category Badge */}
                 <div className="absolute top-4 left-4">
