@@ -116,7 +116,7 @@ const FloatingChatbot: React.FC = () => {
   return (
     <>
       {/* Floating Button */}
-      <div className="fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6 md:bottom-6 md:right-20">
+      <div className="fixed bottom-20 right-6 z-50 sm:bottom-24 sm:right-6 md:bottom-6 md:right-20">
         <button
           onClick={() => setIsOpen(!isOpen)}
           data-chatbot-trigger
@@ -136,7 +136,7 @@ const FloatingChatbot: React.FC = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-16 right-4 w-[calc(100vw-2rem)] max-w-sm h-[70vh] max-h-[500px] sm:bottom-20 sm:right-6 sm:w-80 sm:max-w-sm sm:h-[500px] md:bottom-24 md:right-20 md:w-96 md:max-w-md bg-black border border-yellow-400/30 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden">
+        <div className="fixed bottom-32 right-4 w-[calc(100vw-2rem)] max-w-sm h-[60vh] max-h-[400px] sm:bottom-36 sm:right-6 sm:w-80 sm:max-w-sm sm:h-[500px] md:bottom-24 md:right-20 md:w-96 md:max-w-md bg-black border border-yellow-400/30 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 p-3 sm:p-4 flex items-center justify-between">
             <div className="flex items-center space-x-2 sm:space-x-3">
