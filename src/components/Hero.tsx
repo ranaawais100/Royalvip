@@ -34,15 +34,7 @@ const Hero = () => {
       features: ["City Tours", "Business Travel", "Luxury Fleet"],
       mobileObjectPosition: "object-center",
     },
-    {
-      id: 4,
-      image: heroImage3,
-      title: "Mercedes S-Class",
-      subtitle: "Executive Elegance",
-      description: "Travel in sophisticated style with our Mercedes S-Class fleet. The perfect choice for discerning clients seeking luxury.",
-      features: ["Luxury Interior", "Smooth Performance", "Premium Service"],
-      mobileObjectPosition: "object-bottom",
-    },
+  
     {
         id: 5,
         image: heroImage4,
