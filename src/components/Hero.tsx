@@ -12,6 +12,14 @@ const Hero = () => {
   // Premium hero slides with luxury vehicles
   const heroSlides = [
     {
+      id: 1,
+      image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      title: "Explore Dubai in Style",
+      subtitle: "Your Journey, Our Passion",
+      description: "Experience the ultimate in luxury travel with our exclusive fleet of premium vehicles. Arrive in style, wherever you go.",
+      features: ["24/7 Service", "Luxury Fleet", "Professional Chauffeurs"]
+    },
+    {
       id: 2,
       image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
       title: "UAE Skyline Views",
@@ -29,11 +37,19 @@ const Hero = () => {
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      image: "https://images.unsplash.com/photo-1617469723520-4a87214a1879?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
       title: "Mercedes S-Class",
       subtitle: "Executive Elegance",
       description: "Travel in sophisticated style with our Mercedes S-Class fleet. The perfect choice for discerning clients seeking luxury.",
       features: ["Luxury Interior", "Smooth Performance", "Premium Service"]
+    },
+    {
+        id: 5,
+        image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7207?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+        title: "Architectural Marvels",
+        subtitle: "A Journey Through Modern Wonders",
+        description: "Witness Dubai's stunning architecture from the comfort of our luxury vehicles. A perfect blend of comfort and discovery.",
+        features: ["Sightseeing", "Photo Opportunities", "Guided Tours"]
     }
   ];
 
@@ -106,7 +122,7 @@ const Hero = () => {
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, (max-width: 1280px) 100vw, 100vw"
             />
             {/* Luxury Gold Accent Overlay Only */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-transparent to-black/30" />
           </div>
         ))}
         </div>
@@ -165,18 +181,18 @@ const Hero = () => {
                 </div>
 
                 <div className="overflow-hidden">
-                  <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight transform transition-all duration-1200 delay-300 ${
+                  <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight transform transition-all duration-1200 delay-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)] ${
                     currentSlide >= 0 ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
                   }`}>
-                    <span className="block text-white drop-shadow-2xl text-xl sm:text-2xl md:text-3xl lg:text-5xl">{heroSlides[currentSlide]?.title}</span>
-                    <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent drop-shadow-lg text-lg sm:text-xl md:text-2xl lg:text-4xl">
+                    <span className="block text-white text-xl sm:text-2xl md:text-3xl lg:text-5xl">{heroSlides[currentSlide]?.title}</span>
+                    <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent text-lg sm:text-xl md:text-2xl lg:text-4xl">
                       {heroSlides[currentSlide]?.subtitle}
                     </span>
                   </h1>
                 </div>
 
                 <div className="overflow-hidden">
-                  <p className={`text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 max-w-xl sm:max-w-2xl lg:max-w-3xl leading-relaxed font-light transform transition-all duration-1200 delay-500 ${
+                  <p className={`text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 max-w-xl sm:max-w-2xl lg:max-w-3xl leading-relaxed font-light transform transition-all duration-1200 delay-500 drop-shadow-[0_1px_3px_rgba(0,0,0,0.7)] ${
                     currentSlide >= 0 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                   }`}>
                     {heroSlides[currentSlide]?.description}

@@ -105,7 +105,7 @@ const LuxuryBanner = () => {
             <div className="flex flex-wrap justify-center gap-8 text-sm">
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-gradient-to-r from-primary to-accent rounded-full animate-pulse"></div>
-                <span className="text-primary font-semibold">Dubai • Abu Dhabi • Sharjah</span>
+                <span className="text-primary font-semibold">Dubai • Abu Dhabi • Other Emirates</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-gradient-to-r from-primary to-accent rounded-full animate-pulse"></div>

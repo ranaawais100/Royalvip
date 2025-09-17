@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Star, MapPin, Camera } from 'lucide-react';
+import { Star, MapPin, ShoppingCart } from 'lucide-react';
 import { Car } from '../utils/dynamicImageLoader';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -21,15 +21,17 @@ const AutoCarCard: React.FC<AutoCarCardProps> = ({
     setIsImageLoading(false);
   };
 
-  const handleViewGallery = () => {
-    navigate(`/car/${car.id}`);
+  const handleBookNow = () => {
+    navigate(`/booking`);
   };
 
-
+  const handleImageClick = () => {
+    navigate(`/car/${car.id}`);
+  }
 
   return (
     <Card className={`group overflow-hidden bg-gradient-to-br from-gray-900 to-black border-gray-800 transition-all duration-500 hover:-translate-y-2 hover:border-yellow-500/30 w-full ${className}`}>
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden cursor-pointer" onClick={handleImageClick}>
         {isImageLoading && (
           <div className="absolute inset-0 bg-gray-900 flex items-center justify-center z-10">
             <div className="w-8 h-8 border-2 border-yellow-500/30 border-t-yellow-500 rounded-full animate-spin" />
@@ -43,11 +45,11 @@ const AutoCarCard: React.FC<AutoCarCardProps> = ({
           loading="lazy"
         />
 
-        
+
         <Badge className="absolute top-2 sm:top-3 md:top-4 left-2 sm:left-3 md:left-4 bg-yellow-500/90 text-black backdrop-blur-sm font-semibold text-xs sm:text-sm">
           {car.category}
         </Badge>
-        
+
         <div className="absolute top-2 sm:top-3 md:top-4 right-2 sm:right-3 md:right-4 flex items-center gap-1 bg-black/70 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1">
           <Star className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-400 fill-current" />
           <span className="text-white text-xs sm:text-sm font-medium">{car.rating.toFixed(1)}</span>
@@ -80,11 +82,11 @@ const AutoCarCard: React.FC<AutoCarCardProps> = ({
         {/* Gallery Button */}
         <div className="mt-3 sm:mt-4">
           <button
-            onClick={handleViewGallery}
+            onClick={handleBookNow}
             className="w-full bg-gradient-to-r from-[#d4af37] to-[#f5e79e] hover:from-[#f5e79e] hover:to-[#d4af37] text-black font-semibold py-2 sm:py-2.5 md:py-3 px-3 sm:px-4 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base"
           >
-            <Camera className="h-3 w-3 sm:h-4 sm:w-4" />
-            View Gallery
+            <ShoppingCart className="h-3 w-3 sm:h-4 sm:w-4" />
+            Book Now
           </button>
         </div>
 

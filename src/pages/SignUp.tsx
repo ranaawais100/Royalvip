@@ -6,7 +6,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Label } from '@/components/ui/label';
 import { Eye, EyeOff, Crown, ArrowLeft } from 'lucide-react';
 import Navigation from '@/components/Navigation';
-import heroCarImage from '@/assets/streatch limos/IMG-20250906-WA0108.jpg';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -45,17 +44,7 @@ const SignUp = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* Hero Background Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0">
-          <img
-            src={heroCarImage}
-            alt="Luxury Car"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/95"></div>
-        </div>
+  
         
         {/* Content */}
         <div className="relative z-10 container mx-auto px-4 pt-16">

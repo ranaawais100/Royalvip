@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Eye, EyeOff, Crown, ArrowLeft } from 'lucide-react';
 import Navigation from '@/components/Navigation';
-import heroCarImage from '@/assets/streatch limos/IMG-20250906-WA0108.jpg';
+
 
 const SignIn = () => {
   const [formData, setFormData] = useState({

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AutoCarCard from './AutoCarCard';
 import { loadCarData, CarCategory, Car } from '../utils/dynamicImageLoader';
-import { vehicleCategories } from '../data/vehicleData';
 
 interface HorizontalCarShowcaseProps {
   title?: string;
@@ -23,20 +22,14 @@ const HorizontalCarShowcase: React.FC<HorizontalCarShowcaseProps> = ({
     const loadData = async () => {
       try {
         setLoading(true);
-        let carData = await loadCarData();
-        
-        // If no data from dynamic loader, use static data as fallback
-        if (carData.length === 0) {
-          carData = Object.entries(vehicleCategories).map(([key, category]) => ({
-            id: key,
-            name: category.title,
-            folderName: key,
-            description: category.description,
-            cars: category.cars
-          }));
-        }
-        
-        setCategories(carData);
+        const allCategories = await loadCarData();
+
+        // Filter to only include the 'sprinters' category
+        const sprinterCategory = allCategories.filter(
+          (category) => category.folderName === 'sprinters'
+        );
+
+        setCategories(sprinterCategory);
       } catch (error) {
         console.error('Failed to load car data:', error);
       } finally {

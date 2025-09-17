@@ -211,29 +211,7 @@ const Services = () => {
       duration: "2-hour minimum",
       availability: "Daily 6 AM - 12 AM"
     },
-    {
-      icon: <Shield className="h-12 w-12" />,
-      title: "VIP Protection",
-      description: "Discreet and professional security transportation for high-profile clients.",
-      features: ["Security Trained Drivers", "Armored Vehicles", "Route Planning", "24/7 Support"],
-      price: "From AED 1100",
-      detailedDescription: "Our VIP protection service provides the highest level of security and discretion for high-profile individuals, executives, and celebrities requiring enhanced safety measures.",
-      benefits: [
-        "Security-trained and background-checked drivers",
-        "Armored vehicles with advanced safety features",
-        "Strategic route planning and threat assessment",
-        "Coordination with security teams and venues",
-        "Encrypted communication systems",
-        "Emergency response protocols and backup plans"
-      ],
-      pricingTiers: [
-        { type: "Executive Protection", price: "AED 1100-1850/hr", capacity: "Up to 3 passengers" },
-          { type: "Armored SUV", price: "AED 1850-3000/hr", capacity: "Up to 6 passengers" },
-          { type: "Security Convoy", price: "AED 3000-4500/hr", capacity: "Multiple vehicles" }
-      ],
-      duration: "Minimum 4-hour booking",
-      availability: "24/7 with advance coordination"
-    },
+    
     {
       icon: <Globe className="h-12 w-12" />,
       title: "City Tours",
