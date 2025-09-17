@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, Phone, Star, Shield } from "lucide-react";
-import limousineImage from "@/assets/luxary chaffaur/IMG-20250906-WA0122.jpg";
+import limousineImage from "@/assets/luxary chaffaur/front(3).jpg";
 
 const LuxuryBanner = () => {
   const navigate = useNavigate();

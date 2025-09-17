@@ -17,6 +17,7 @@ const Index = () => {
         title="Our Premium Fleet"
         subtitle="Discover our collection of luxury vehicles, each meticulously maintained and ready for your journey."
         maxCars={20}
+        showAll={true}
       />
       <HolidayPackages />
       <MapSection />

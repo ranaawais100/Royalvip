@@ -34,7 +34,7 @@ const Blog: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <SEOHead
-        title="Luxury Automotive Blog - Royal VIP Limos"
+        title="Royalviplimos.com"
         description="Discover the latest insights on luxury transportation, premium car services, and exclusive automotive experiences. Stay updated with Royal VIP Limos blog."
         keywords="luxury automotive blog, premium car services, VIP transportation, luxury travel, chauffeur insights, automotive news"
         url="https://royalviplimos.com/blog"

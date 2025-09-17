@@ -149,12 +149,6 @@ const Navigation = () => {
                 </a>
               </div>
               <div className="flex flex-col space-y-3 pt-3 border-t border-border">
-                <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
-                  <Button variant="outline" size="default" className="w-full border-primary/20 text-foreground hover:bg-primary/10 hover:text-primary justify-center py-3 touch-manipulation">
-                    <User className="h-4 w-4 mr-2" />
-                    Sign Up
-                  </Button>
-                </Link>
                 <Link to="/booking" onClick={() => setIsMenuOpen(false)}>
                   <Button variant="default" size="default" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground justify-center py-3 touch-manipulation">
                     <Phone className="h-4 w-4 mr-2" />

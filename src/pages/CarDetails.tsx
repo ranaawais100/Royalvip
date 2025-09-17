@@ -92,13 +92,12 @@ const CarDetails: React.FC = () => {
   const handleEnquireNow = () => {
     if (!car || !selectedBooking) return;
     const message = `Hi! I'm interested in the ${car.name} for ${selectedBooking.label} (${selectedBooking.price}). Could you please provide more details and availability?`;
-    openWhatsApp(car.whatsappNumber, message);
+    openWhatsApp(message, '+971585859944');
   };
 
   const handleBookOnCall = () => {
-    if (!car || !selectedBooking) return;
-    const message = `Hi! I'd like to book the ${car.name} for ${selectedBooking.label} (${selectedBooking.price}). Please call me to discuss the details.`;
-    openWhatsApp(car.whatsappNumber, message);
+    if (!car) return;
+    window.location.href = `tel:${car.whatsappNumber}`;
   };
 
 
@@ -278,13 +277,7 @@ const CarDetails: React.FC = () => {
 
               {/* Action Buttons */}
               <div className="space-y-3">
-                <button
-                  onClick={handleEnquireNow}
-                  className="w-full py-4 px-6 bg-gradient-to-r from-[#d4af37] to-[#f5e79e] hover:from-[#f5e79e] hover:to-[#d4af37] text-black rounded-xl transition-all duration-300 font-semibold hover:shadow-lg hover:shadow-[#d4af37]/40 transform hover:scale-[1.02] flex items-center justify-center space-x-2"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  <span>Enquire Now via WhatsApp</span>
-                </button>
+              
                 <button
                   onClick={handleBookOnCall}
                   className="w-full py-4 px-6 bg-transparent border-2 border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37]/10 rounded-xl transition-all duration-300 font-semibold hover:shadow-lg hover:shadow-[#d4af37]/20 flex items-center justify-center space-x-2"

@@ -11,6 +11,7 @@ const Fleet = () => {
         title="Our Complete Fleet"
         subtitle="Explore our entire collection of luxury vehicles"
         className="pt-20"
+        showAll={true}
       />
       <Footer />
     </div>

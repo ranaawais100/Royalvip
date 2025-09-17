@@ -7,13 +7,15 @@ interface HorizontalCarShowcaseProps {
   subtitle?: string;
   maxCars?: number;
   className?: string;
+  showAll?: boolean;
 }
 
 const HorizontalCarShowcase: React.FC<HorizontalCarShowcaseProps> = ({
   title = "Our Premium Fleet",
   subtitle = "Discover our collection of luxury vehicles, each meticulously maintained and ready for your journey.",
   maxCars = 20,
-  className = ''
+  className = '',
+  showAll = false
 }) => {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState<CarCategory[]>([]);
@@ -24,12 +26,14 @@ const HorizontalCarShowcase: React.FC<HorizontalCarShowcaseProps> = ({
         setLoading(true);
         const allCategories = await loadCarData();
 
-        // Filter to only include the 'sprinters' category
-        const sprinterCategory = allCategories.filter(
-          (category) => category.folderName === 'sprinters'
-        );
-
-        setCategories(sprinterCategory);
+        if (showAll) {
+          setCategories(allCategories);
+        } else {
+          const selectedCategories = allCategories.filter(
+            (category) => category.folderName === 'sprinters' || category.folderName === 'v class' || category.folderName === 'stretch-limos'
+          );
+          setCategories(selectedCategories);
+        }
       } catch (error) {
         console.error('Failed to load car data:', error);
       } finally {
@@ -38,7 +42,7 @@ const HorizontalCarShowcase: React.FC<HorizontalCarShowcaseProps> = ({
     };
 
     loadData();
-  }, [maxCars]);
+  }, [maxCars, showAll]);
 
 
 

@@ -12,20 +12,12 @@ const Hero = () => {
   // Premium hero slides with luxury vehicles
   const heroSlides = [
     {
-      id: 1,
-      image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-      title: "Explore Dubai in Style",
-      subtitle: "Your Journey, Our Passion",
-      description: "Experience the ultimate in luxury travel with our exclusive fleet of premium vehicles. Arrive in style, wherever you go.",
-      features: ["24/7 Service", "Luxury Fleet", "Professional Chauffeurs"]
-    },
-    {
       id: 2,
       image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
       title: "UAE Skyline Views",
       subtitle: "Luxury Transportation Across UAE",
       description: "Discover the beauty of the UAE while traveling in our premium fleet. Experience luxury transportation with stunning skyline views.",
-      features: ["Scenic Routes", "Premium Comfort", "Professional Service"]
+      features: ["Scenic Routes", "Premium Comfort", "Professional Service"],
     },
     {
       id: 3,
@@ -33,23 +25,23 @@ const Hero = () => {
       title: "Dubai City Experience",
       subtitle: "Iconic Dubai Transportation",
       description: "Explore Dubai's magnificent cityscape with our luxury vehicle service. Perfect for business trips and sightseeing tours.",
-      features: ["City Tours", "Business Travel", "Luxury Fleet"]
+      features: ["City Tours", "Business Travel", "Luxury Fleet"],
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1617469723520-4a87214a1879?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      image: "https://mercedesblog.com/wp-content/uploads/2016/12/Mercedes-Benz-S-Class-Coupe-Night-Edition-3.jpg",
       title: "Mercedes S-Class",
       subtitle: "Executive Elegance",
       description: "Travel in sophisticated style with our Mercedes S-Class fleet. The perfect choice for discerning clients seeking luxury.",
-      features: ["Luxury Interior", "Smooth Performance", "Premium Service"]
+      features: ["Luxury Interior", "Smooth Performance", "Premium Service"],
     },
     {
         id: 5,
-        image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7207?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+        image: "https://media.gettyimages.com/id/2032308693/photo/panoramic-view-of-the-illuminated-downtown-skyline-of-dubai.jpg?b=1&s=2048x2048&w=0&k=20&c=w5iKmw49hDAjEVRhJ9p7NA4U021hNV6Qoop8GlCxWvE=",
         title: "Architectural Marvels",
         subtitle: "A Journey Through Modern Wonders",
         description: "Witness Dubai's stunning architecture from the comfort of our luxury vehicles. A perfect blend of comfort and discovery.",
-        features: ["Sightseeing", "Photo Opportunities", "Guided Tours"]
+        features: ["Sightseeing", "Photo Opportunities", "Guided Tours"],
     }
   ];
 
@@ -58,7 +50,7 @@ const Hero = () => {
     if (isPlaying) {
       intervalRef.current = setInterval(() => {
         setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-      }, 5000);
+      }, 7000);
     } else {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
@@ -90,168 +82,153 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen h-screen max-h-screen overflow-hidden w-full">
-      {/* Hero Carousel Container */}
-      <div className="relative w-full h-full min-h-[100vh] max-h-[100vh] overflow-hidden">
-        {/* Enhanced Responsive Image Container */}
-        <div className="absolute inset-0 w-full h-full flex items-center justify-center">
-        {/* Background Images */}
+      <div className="relative w-full h-full">
         {heroSlides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`absolute inset-0 transition-all duration-1500 ease-out ${
-              index === currentSlide
-                ? 'opacity-100 scale-100'
-                : 'opacity-0 scale-110'
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
           >
             <img
               src={slide.image}
               alt={slide.title}
-              className="w-full h-full object-cover object-center transform transition-transform duration-1500 ease-out
-                         xs:object-cover sm:object-cover md:object-cover lg:object-cover xl:object-cover 2xl:object-cover
-                         scale-100 xs:scale-102 sm:scale-105 md:scale-108 lg:scale-105 xl:scale-102 2xl:scale-100
-                         hover:scale-110 xs:hover:scale-112 sm:hover:scale-115 md:hover:scale-118 lg:hover:scale-115 xl:hover:scale-112 2xl:hover:scale-110
-                         min-h-screen max-h-screen"
+              className="w-full h-full object-cover"
               loading={index === 0 ? "eager" : "lazy"}
-              style={{
-                aspectRatio: '16/9',
-                minHeight: '100vh',
-                maxHeight: '100vh',
-                objectPosition: 'center center'
-              }}
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, (max-width: 1280px) 100vw, 100vw"
             />
-            {/* Luxury Gold Accent Overlay Only */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-transparent to-black/30" />
+            <div className="absolute inset-0 bg-black/50" />
           </div>
         ))}
-        </div>
+      </div>
 
-        {/* Enhanced Navigation Controls */}
-        <div className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-8 z-30 flex items-center gap-2 sm:gap-3 lg:gap-4">
-          <button
-            onClick={togglePlayPause}
-            className="p-2 sm:p-2.5 lg:p-3 rounded-full bg-white/15 backdrop-blur-md hover:bg-white/25 transition-all duration-500 text-white border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl transform hover:scale-105"
-          >
-            {isPlaying ? <Pause className="h-4 w-4 sm:h-5 sm:w-5" /> : <Play className="h-4 w-4 sm:h-5 sm:w-5" />}
-          </button>
-          <button
-            onClick={prevSlide}
-            className="p-2 sm:p-2.5 lg:p-3 rounded-full bg-white/15 backdrop-blur-md hover:bg-white/25 transition-all duration-500 text-white border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl transform hover:scale-105"
-          >
-            <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="p-2 sm:p-2.5 lg:p-3 rounded-full bg-white/15 backdrop-blur-md hover:bg-white/25 transition-all duration-500 text-white border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl transform hover:scale-105"
-          >
-            <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
-          </button>
-        </div>
+      <div className="absolute top-4 right-4 z-30 flex items-center gap-2">
+        <button
+          onClick={togglePlayPause}
+          className="p-2 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 transition-colors"
+        >
+          {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
+        </button>
+        <button
+          onClick={prevSlide}
+          className="p-2 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 transition-colors"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="p-2 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 transition-colors"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+      </div>
 
-        {/* Enhanced Slide Indicators */}
-        <div className="absolute bottom-6 sm:bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 z-30 flex gap-2 sm:gap-3">
-          {heroSlides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`transition-all duration-500 rounded-full border-2 ${
-                index === currentSlide
-                  ? 'w-8 h-2 sm:w-10 sm:h-2.5 lg:w-12 lg:h-3 bg-gradient-to-r from-primary to-accent border-white/60 shadow-lg'
-                  : 'w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 bg-white/40 border-white/30 hover:bg-white/60 hover:border-white/50 hover:scale-110'
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex gap-3">
+        {heroSlides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`transition-all duration-300 rounded-full h-2 ${
+              index === currentSlide ? "w-8 bg-white" : "w-2 bg-white/50 hover:bg-white/75"
+            }`}
+          />
+        ))}
+      </div>
+
+      <div className="absolute inset-0 z-20 flex items-center">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl text-white space-y-6">
+            <div className="overflow-hidden">
+              <div
+                className={`transition-transform duration-1000 transform ${
+                  currentSlide >= 0 ? "translate-y-0" : "translate-y-full"
+                }`}
+              >
+                <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2">
+                  <Star className="h-4 w-4 text-yellow-400" />
+                  <span className="text-sm font-medium">Premium Luxury Service</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="overflow-hidden">
+              <h1
+                className={`text-5xl font-bold leading-tight transition-transform duration-1000 delay-100 transform ${
+                  currentSlide >= 0 ? "translate-y-0" : "translate-y-full"
+                }`}
+                style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}
+              >
+                <span className="block">{heroSlides[currentSlide]?.title}</span>
+                <span className="block text-3xl text-yellow-400">{
+                  heroSlides[currentSlide]?.subtitle
+                }</span>
+              </h1>
+            </div>
+
+            <div className="overflow-hidden">
+              <p
+                className={`text-lg max-w-2xl leading-relaxed transition-transform duration-1000 delay-200 transform ${
+                  currentSlide >= 0 ? "translate-y-0" : "translate-y-full"
+                }`}
+                style={{ textShadow: "0 1px 3px rgba(0,0,0,0.5)" }}
+              >
+                {heroSlides[currentSlide]?.description}
+              </p>
+            </div>
+
+            <div
+              className={`flex flex-wrap gap-3 transition-transform duration-1000 delay-300 transform ${
+                currentSlide >= 0 ? "translate-y-0" : "translate-y-full"
               }`}
-            />
-          ))}
-        </div>
-
-        {/* Hero Content */}
-        <div className="absolute inset-0 z-20 flex items-center">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-            <div className="max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
-              {/* Animated Content */}
-              <div className="text-white space-y-8">
-                {/* Premium Badge */}
-                <div className="overflow-hidden">
-                  <div className={`inline-flex items-center gap-2 bg-gradient-to-r from-primary/20 to-accent/20 backdrop-blur-sm border border-primary/30 rounded-full px-6 py-3 transform transition-all duration-1000 delay-100 ${
-                    currentSlide >= 0 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                  }`}>
-                    <Star className="h-4 w-4 text-primary" />
-                    <span className="text-sm font-medium text-white/90">Premium Luxury Service</span>
-                  </div>
+            >
+              {heroSlides[currentSlide]?.features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2"
+                >
+                  <Star className="h-4 w-4 text-yellow-400" />
+                  <span className="text-sm font-medium">{feature}</span>
                 </div>
+              ))}
+            </div>
 
-                <div className="overflow-hidden">
-                  <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight transform transition-all duration-1200 delay-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)] ${
-                    currentSlide >= 0 ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-                  }`}>
-                    <span className="block text-white text-xl sm:text-2xl md:text-3xl lg:text-5xl">{heroSlides[currentSlide]?.title}</span>
-                    <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent text-lg sm:text-xl md:text-2xl lg:text-4xl">
-                      {heroSlides[currentSlide]?.subtitle}
-                    </span>
-                  </h1>
-                </div>
+            <div
+              className={`flex gap-4 pt-4 transition-transform duration-1000 delay-400 transform ${
+                currentSlide >= 0 ? "translate-y-0" : "translate-y-full"
+              }`}
+            >
+              <Button
+                onClick={handleBookNow}
+                size="lg"
+                className="bg-yellow-400 text-black font-bold px-8 py-3 text-lg hover:bg-yellow-300 transition-colors"
+              >
+                Book Now
+              </Button>
+              <Button
+                onClick={() => navigate('/fleet')}
+                variant="outline"
+                size="lg"
+                className="border-2 border-white/50 text-white hover:bg-white/20 px-8 py-3 text-lg transition-colors"
+              >
+                View Fleet
+              </Button>
+            </div>
 
-                <div className="overflow-hidden">
-                  <p className={`text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 max-w-xl sm:max-w-2xl lg:max-w-3xl leading-relaxed font-light transform transition-all duration-1200 delay-500 drop-shadow-[0_1px_3px_rgba(0,0,0,0.7)] ${
-                    currentSlide >= 0 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                  }`}>
-                    {heroSlides[currentSlide]?.description}
-                  </p>
-                </div>
-
-                {/* Enhanced Features */}
-                <div className={`flex flex-wrap gap-2 sm:gap-3 lg:gap-4 transform transition-all duration-1200 delay-700 ${
-                  currentSlide >= 0 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                }`}>
-                  {heroSlides[currentSlide]?.features.map((feature, index) => (
-                    <div key={index} className="flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-white/15 to-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105">
-                      <Star className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
-                      <span className="text-xs sm:text-xs lg:text-xs font-medium text-white">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Enhanced CTA Buttons */}
-                <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 pt-4 sm:pt-6 transform transition-all duration-1200 delay-900 ${
-                  currentSlide >= 0 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                }`}>
-                  <Button
-                    onClick={handleBookNow}
-                    size="lg"
-                    className="bg-gradient-to-r from-primary via-accent to-primary hover:from-primary/90 hover:via-accent/90 hover:to-primary/90 text-white font-bold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-2xl hover:shadow-primary/30 transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 border border-primary/30 backdrop-blur-sm w-full sm:w-auto"
-                  >
-                    Book Now
-                  </Button>
-                  <Button
-                    onClick={() => navigate('/fleet')}
-                    variant="outline"
-                    size="lg"
-                    className="border-2 border-white/40 text-white hover:bg-white/15 backdrop-blur-md px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 shadow-lg hover:shadow-xl font-semibold w-full sm:w-auto"
-                  >
-                    View Fleet
-                  </Button>
-                </div>
-
-                {/* Enhanced Trust Indicators */}
-                <div className={`flex flex-wrap items-center gap-2 sm:gap-4 lg:gap-8 pt-4 sm:pt-6 lg:pt-8 transform transition-all duration-1200 delay-1100 ${
-                  currentSlide >= 0 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                }`}>
-                  <div className="flex items-center gap-2 sm:gap-3 text-xs text-white/90 bg-white/10 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1 border border-white/20">
-                    <Shield className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
-                    <span className="font-medium hidden sm:inline">Fully Licensed & Insured</span>
-                    <span className="font-medium sm:hidden">Licensed</span>
-                  </div>
-                  <div className="flex items-center gap-2 sm:gap-3 text-xs text-white/90 bg-white/10 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1 border border-white/20">
-                    <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
-                    <span className="font-medium hidden sm:inline">24/7 Premium Support</span>
-                    <span className="font-medium sm:hidden">24/7 Support</span>
-                  </div>
-                  <div className="flex items-center gap-2 sm:gap-3 text-xs text-white/90 bg-white/10 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1 border border-white/20">
-                    <Star className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
-                    <span className="font-medium hidden sm:inline">5-Star Rated Service</span>
-                    <span className="font-medium sm:hidden">5-Star Rated</span>
-                  </div>
-                </div>
+            <div
+              className={`flex items-center gap-4 pt-6 transition-transform duration-1000 delay-500 transform ${
+                currentSlide >= 0 ? "translate-y-0" : "translate-y-full"
+              }`}
+            >
+              <div className="flex items-center gap-2 text-sm">
+                <Shield className="h-5 w-5 text-yellow-400" />
+                <span>Fully Licensed & Insured</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Clock className="h-5 w-5 text-yellow-400" />
+                <span>24/7 Premium Support</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Star className="h-5 w-5 text-yellow-400" />
+                <span>5-Star Rated Service</span>
               </div>
             </div>
           </div>

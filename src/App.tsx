@@ -15,8 +15,6 @@ import Services from "./pages/Services";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Booking from "./pages/Booking";
-import SignUp from "./pages/SignUp";
-import SignIn from "./pages/SignIn";
 import PremiumCarDemo from "./pages/PremiumCarDemo";
 import CarDetails from "./pages/CarDetails";
 import Blog from "./pages/Blog";
@@ -44,8 +42,6 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/booking" element={<Booking />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn />} />
           <Route path="/premium-demo" element={<PremiumCarDemo />} />
           <Route path="/car/:carId" element={<CarDetails />} />
           <Route path="/blog" element={<Blog />} />
