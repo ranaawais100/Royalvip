@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, Play, Pause, Star, Shield, Clock } from "luc
 
 import heroImage1 from "@/assets/hero/hero-1.jpg";
 import heroImage2 from "@/assets/hero/hero-2.jpg";
-import heroImage3 from "@/assets/hero/hero-3.jpg";
+import heroImage3 from "@/assets/hero/q.jpg";
 import heroImage4 from "@/assets/hero/hero-4.jpg";
 
 const Hero = () => {
@@ -34,7 +34,15 @@ const Hero = () => {
       features: ["City Tours", "Business Travel", "Luxury Fleet"],
       mobileObjectPosition: "object-center",
     },
-  
+    {
+      id: 4,
+      image: heroImage3,
+      title: "Mercedes S-Class",
+      subtitle: "Executive Elegance",
+      description: "Travel in sophisticated style with our Mercedes S-Class fleet. The perfect choice for discerning clients seeking luxury.",
+      features: ["Luxury Interior", "Smooth Performance", "Premium Service"],
+      mobileObjectPosition: "object-bottom",
+    },
     {
         id: 5,
         image: heroImage4,
@@ -94,7 +102,7 @@ const Hero = () => {
             <img
               src={slide.image}
               alt={slide.title}
-              className={`w-full h-full object-cover ${slide.mobileObjectPosition} md:object-center`}
+              className={`w-full h-full object-cover ${slide.mobileObjectPosition} lg:object-center`}
               loading={index === 0 ? "eager" : "lazy"}
             />
             <div className="absolute inset-0 bg-black/50" />
@@ -135,7 +143,7 @@ const Hero = () => {
         ))}
       </div>
 
-      <div className="absolute inset-0 z-20 flex flex-col justify-center md:justify-center items-center text-center md:text-left">
+      <div className="absolute inset-0 z-20 flex flex-col justify-center items-center text-center lg:text-left">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl text-white space-y-4 md:space-y-6">
             <div className="overflow-hidden">
@@ -144,7 +152,7 @@ const Hero = () => {
                   currentSlide >= 0 ? "translate-y-0" : "translate-y-full"
                 }`}
               >
-                <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2">
+                <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 mx-auto lg:mx-0">
                   <Star className="h-4 w-4 text-yellow-400" />
                   <span className="text-xs md:text-sm font-medium">Premium Luxury Service</span>
                 </div>
@@ -167,7 +175,7 @@ const Hero = () => {
 
             <div className="overflow-hidden">
               <p
-                className={`text-base md:text-lg max-w-2xl leading-relaxed transition-transform duration-1000 delay-200 transform mx-auto md:mx-0 ${
+                className={`text-base md:text-lg max-w-2xl leading-relaxed transition-transform duration-1000 delay-200 transform mx-auto lg:mx-0 ${
                   currentSlide >= 0 ? "translate-y-0" : "translate-y-full"
                 }`}
                 style={{ textShadow: "0 1px 3px rgba(0,0,0,0.5)" }}
@@ -177,7 +185,7 @@ const Hero = () => {
             </div>
 
             <div
-              className={`flex flex-wrap gap-3 transition-transform duration-1000 delay-300 transform justify-center md:justify-start ${
+              className={`flex flex-wrap gap-3 transition-transform duration-1000 delay-300 transform justify-center lg:justify-start ${
                 currentSlide >= 0 ? "translate-y-0" : "translate-y-full"
               }`}
             >
@@ -193,7 +201,7 @@ const Hero = () => {
             </div>
 
             <div
-              className={`flex flex-col sm:flex-row gap-4 pt-4 transition-transform duration-1000 delay-400 transform justify-center md:justify-start ${
+              className={`flex flex-col sm:flex-row gap-4 pt-4 transition-transform duration-1000 delay-400 transform justify-center lg:justify-start ${
                 currentSlide >= 0 ? "translate-y-0" : "translate-y-full"
               }`}
             >
@@ -215,7 +223,7 @@ const Hero = () => {
             </div>
 
             <div
-              className={`flex items-center flex-wrap gap-4 pt-6 transition-transform duration-1000 delay-500 transform justify-center md:justify-start ${
+              className={`flex items-center flex-wrap gap-4 pt-6 transition-transform duration-1000 delay-500 transform justify-center lg:justify-start ${
                 currentSlide >= 0 ? "translate-y-0" : "translate-y-full"
               }`}
             >
