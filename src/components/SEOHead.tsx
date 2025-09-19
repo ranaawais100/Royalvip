@@ -16,7 +16,7 @@ interface SEOHeadProps {
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
-  title = 'Royal VIP Limos - Luxury Car Rental & Chauffeur Services',
+  title = 'Royal VIP Limos Dubai - Luxury Car & Chauffeur Services',
   description = 'Experience premium luxury car rental and professional chauffeur services. Book your perfect ride for special occasions, business travel, and luxury transportation.',
   keywords = 'luxury car rental, chauffeur service, premium transportation, VIP limos, luxury vehicles, professional drivers',
   image = '/og-image.jpg',
@@ -28,7 +28,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   section,
   tags
 }) => {
-  const siteTitle = 'Royal VIP Limos';
+  const siteTitle = 'Royal VIP Limos Dubai';
   const fullTitle = title.includes(siteTitle) ? title : `${title} | ${siteTitle}`;
   
   return (
